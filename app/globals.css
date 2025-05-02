@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 248, 250, 252;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-4 py-2 rounded-md hover:opacity-90 transition-opacity;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white px-4 py-2 rounded-md hover:opacity-90 transition-opacity;
+  }
+  
+  .btn-outline {
+    @apply border border-gray-300 bg-white px-4 py-2 rounded-md hover:bg-gray-50 transition-colors;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-sm p-4 border border-gray-100;
+  }
+  
+  .input {
+    @apply w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50;
+  }
+  
+  .mobile-navbar {
+    @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around items-center p-2 z-50;
+  }
+  
+  .nav-item {
+    @apply flex flex-col items-center justify-center text-xs text-gray-500 py-1;
+  }
+  
+  .nav-item.active {
+    @apply text-primary;
+  }
+}
