@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   title: 'SetFlow - Film ve Dizi Ekip Yönetim Platformu',
   description: 'Film ve dizi setlerinde görev alan ekip üyelerinin iş yönetimini kolaylaştıran platform',
   icons: {
-    icon: '/logo.jpg',
-    shortcut: '/logo.jpg',
-    apple: '/logo.jpg',
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
   },
   openGraph: {
     title: 'SetFlow - Film ve Dizi Ekip Yönetim Platformu',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: 'SetFlow',
     images: [
       {
-        url: '/logo.jpg',
+        url: '/logo.png',
         width: 800,
         height: 600,
         alt: 'SetFlow Logo',

@@ -709,6 +709,15 @@ video {
 .left-0 {
   left: 0px;
 }
+.top-0 {
+  top: 0px;
+}
+.left-\[50\%\] {
+  left: 50%;
+}
+.left-\[40\%\] {
+  left: 40%;
+}
 .z-50 {
   z-index: 50;
 }
@@ -764,12 +773,6 @@ video {
 .mt-8 {
   margin-top: 2rem;
 }
-.mt-\[0px\] {
-  margin-top: 0px;
-}
-.mt-px {
-  margin-top: 1px;
-}
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -821,11 +824,11 @@ video {
 .h-full {
   height: 100%;
 }
-.max-h-\[90vh\] {
-  max-height: 90vh;
-}
 .max-h-\[80vh\] {
   max-height: 80vh;
+}
+.max-h-\[90vh\] {
+  max-height: 90vh;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -842,8 +845,23 @@ video {
 .w-4 {
   width: 1rem;
 }
+.w-\[55px\] {
+  width: 55px;
+}
 .w-full {
   width: 100%;
+}
+.w-\[100px\] {
+  width: 100px;
+}
+.w-\[150px\] {
+  width: 150px;
+}
+.w-\[160px\] {
+  width: 160px;
+}
+.w-\[200px\] {
+  width: 200px;
 }
 .min-w-full {
   min-width: 100%;
@@ -1138,6 +1156,10 @@ video {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
 .py-0\.5 {
   padding-top: 0.125rem;
   padding-bottom: 0.125rem;
@@ -1154,9 +1176,9 @@ video {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 .pb-16 {
   padding-bottom: 4rem;
@@ -1187,6 +1209,15 @@ video {
 }
 .pt-6 {
   padding-top: 1.5rem;
+}
+.pb-20 {
+  padding-bottom: 5rem;
+}
+.pt-10 {
+  padding-top: 2.5rem;
+}
+.pt-5 {
+  padding-top: 1.25rem;
 }
 .text-left {
   text-align: left;

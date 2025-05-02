@@ -1,7 +1,5 @@
 {
-  "/(main)/ayarlar/page": "app/(main)/ayarlar/page.js",
-  "/(main)/proje-bul/page": "app/(main)/proje-bul/page.js",
   "/(main)/anasayfa/page": "app/(main)/anasayfa/page.js",
-  "/(main)/profil/page": "app/(main)/profil/page.js",
-  "/(main)/proje-olustur/page": "app/(main)/proje-olustur/page.js"
+  "/(main)/ayarlar/page": "app/(main)/ayarlar/page.js",
+  "/(auth)/giris/page": "app/(auth)/giris/page.js"
 }

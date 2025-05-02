@@ -40,8 +40,10 @@ export default function LoginPage() {
   return (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h1 className="text-2xl font-bold text-primary">SetFlow</h1>
-        <p className="text-gray-600 mt-2">Film ve Dizi Ekip Yönetim Platformu</p>
+      <div>
+        <img src="/logo.png" className='mx-auto w-[200px]' alt="" />
+      </div>
+        <p className="text-gray-600">Film ve Dizi Ekip Yönetim Platformu</p>
       </div>
       
       {error && (
