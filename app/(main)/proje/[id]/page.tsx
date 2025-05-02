@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FiArrowLeft, FiCalendar, FiDollarSign, FiUser, FiMonitor, FiTag, FiClock, FiMapPin, FiFile, FiCamera, FiImage, FiTool } from 'react-icons/fi';
 import { projects, getProjectTypeName, getProjectStatusName, getPlatformName } from '@/lib/data/projects';
 import { users, getRoleName } from '@/lib/data/users';
+import ApplicationModal from '@/components/project/ApplicationModal';
 
 type Tab = 'callsheet' | 'script' | 'timecode' | 'continuity' | 'preparation' | 'moodboard' | 'equipment';
 
@@ -17,6 +18,9 @@ export default function ProjectDetailPage() {
   const [project, setProject] = useState(projects.find(p => p.id === id));
   const [activeTab, setActiveTab] = useState<Tab>('callsheet');
   const [director, setDirector] = useState(users.find(u => u.id === project?.director));
+  
+  // Başvuru modalı için state
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Projeyi bulamazsa ana sayfaya yönlendir
   useEffect(() => {
@@ -47,6 +51,19 @@ export default function ProjectDetailPage() {
   const canAccessTab = (tab: Tab) => {
     if (!activeUserRole) return false;
     return tabPermissions[tab].includes(activeUserRole);
+  };
+  
+  // Kullanıcı zaten ekip üyesi mi kontrol et
+  const isTeamMember = project.team?.some(member => member.userId === activeUserId);
+  
+  // Başvuru modalini aç
+  const handleApplyClick = () => {
+    setIsModalOpen(true);
+  };
+  
+  // Modalı kapat
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
   
   return (
@@ -124,9 +141,15 @@ export default function ProjectDetailPage() {
           <p className="mt-1">{project.description}</p>
         </div>
         
-        {!project.team?.some(member => member.userId === activeUserId) && (
+        {!isTeamMember && (
           <div className="mt-4 pt-4 border-t border-gray-100 flex justify-end">
-            <button className="btn-primary">Projeye Başvur</button>
+            <button
+              onClick={handleApplyClick}
+              className="btn-primary flex items-center gap-2"
+            >
+              <FiFile size={16} />
+              <span>CV ile Başvur</span>
+            </button>
           </div>
         )}
       </div>
@@ -318,6 +341,16 @@ export default function ProjectDetailPage() {
           <button className="btn-outline mt-4">Ekip Üyesi Ekle</button>
         )}
       </div>
+      
+      {/* Başvuru Modalı */}
+      {isModalOpen && (
+        <ApplicationModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          projectId={project.id}
+          projectTitle={project.title}
+        />
+      )}
     </div>
   );
 }

@@ -4,11 +4,21 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { FiSearch, FiFilter, FiGrid, FiList, FiCalendar, FiDollarSign, FiTag, FiMonitor, FiX } from 'react-icons/fi';
 import { projects, ProjectType, ProjectPlatform, getProjectTypeName, getPlatformName } from '@/lib/data/projects';
+import ApplicationModal from '@/components/project/ApplicationModal';
+import ProjectPreviewModal from '@/components/project/ProjectPreviewModal';
 
 export default function ProjectSearchPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [showFilters, setShowFilters] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  
+  // Başvuru modalı için state
+  const [isApplicationModalOpen, setIsApplicationModalOpen] = useState(false);
+  const [selectedProjectForApplication, setSelectedProjectForApplication] = useState<{id: string, title: string} | null>(null);
+  
+  // Önizleme modalı için state
+  const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
+  const [previewProject, setPreviewProject] = useState<any>(null);
   
   // Filtreler
   const [filters, setFilters] = useState({
@@ -46,6 +56,43 @@ export default function ProjectSearchPage() {
       budgetMin: '',
       budgetMax: ''
     });
+  };
+  
+  // Başvuru butonuna tıklandığında
+  const handleApplyClick = (e: React.MouseEvent, project: {id: string, title: string}) => {
+    e.preventDefault(); // Link tıklamasını engelle
+    e.stopPropagation();
+    setSelectedProjectForApplication(project);
+    setIsApplicationModalOpen(true);
+  };
+  
+  // Proje kartına tıklandığında (detay yerine önizleme göster)
+  const handleProjectClick = (e: React.MouseEvent, projectId: string) => {
+    e.preventDefault(); // Link navigasyonunu engelle
+    const selectedProject = projects.find(p => p.id === projectId);
+    if (selectedProject) {
+      setPreviewProject(selectedProject);
+      setIsPreviewModalOpen(true);
+    }
+  };
+  
+  // Başvuru modalını başka bir yerden açmak için (örn. önizleme modalından)
+  const openApplicationModal = (projectId: string, projectTitle: string) => {
+    setSelectedProjectForApplication({id: projectId, title: projectTitle});
+    setIsPreviewModalOpen(false); // Önizleme modalını kapat
+    setIsApplicationModalOpen(true); // Başvuru modalını aç
+  };
+  
+  // Başvuru modalını kapat
+  const handleCloseApplicationModal = () => {
+    setIsApplicationModalOpen(false);
+    setSelectedProjectForApplication(null);
+  };
+  
+  // Önizleme modalını kapat
+  const handleClosePreviewModal = () => {
+    setIsPreviewModalOpen(false);
+    setPreviewProject(null);
   };
   
   // Filtreleme işlemi
@@ -256,8 +303,11 @@ export default function ProjectSearchPage() {
       {viewMode === 'grid' ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {filteredProjects.map(project => (
-            <Link href={`/proje/${project.id}`} key={project.id}>
-              <div className="card hover:shadow-md transition-all group">
+            <div key={project.id} className="relative">
+              <div 
+                onClick={(e) => handleProjectClick(e, project.id)}
+                className="card hover:shadow-md transition-all group h-full cursor-pointer"
+              >
                 <h3 className="font-medium text-lg group-hover:text-primary">{project.title}</h3>
                 <div className="flex flex-wrap gap-2 mt-2">
                   <span className="bg-gray-100 px-2 py-0.5 rounded text-xs">
@@ -273,19 +323,25 @@ export default function ProjectSearchPage() {
                     <FiCalendar className="mr-1" size={12} />
                     <span>{new Date(project.startDate).toLocaleDateString('tr-TR')}</span>
                   </div>
-                  <button className="px-3 py-1 bg-primary text-white text-xs rounded-full">
+                  <button 
+                    onClick={(e) => handleApplyClick(e, {id: project.id, title: project.title})}
+                    className="px-3 py-1 bg-primary text-white text-xs rounded-full hover:bg-primary/90 transition-colors"
+                  >
                     Başvur
                   </button>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       ) : (
         <div className="space-y-3">
           {filteredProjects.map(project => (
-            <Link href={`/proje/${project.id}`} key={project.id}>
-              <div className="card hover:shadow-md transition-all p-3 flex justify-between items-center">
+            <div key={project.id} className="relative">
+              <div 
+                onClick={(e) => handleProjectClick(e, project.id)}
+                className="card hover:shadow-md transition-all p-3 flex justify-between items-center cursor-pointer"
+              >
                 <div>
                   <h3 className="font-medium">{project.title}</h3>
                   <div className="flex items-center gap-3 text-xs text-gray-500 mt-1">
@@ -296,13 +352,36 @@ export default function ProjectSearchPage() {
                     <span>{new Date(project.startDate).toLocaleDateString('tr-TR')}</span>
                   </div>
                 </div>
-                <button className="px-3 py-1 bg-primary text-white text-xs rounded-full">
+                <button 
+                  onClick={(e) => handleApplyClick(e, {id: project.id, title: project.title})}
+                  className="px-3 py-1 bg-primary text-white text-xs rounded-full hover:bg-primary/90 transition-colors"
+                >
                   Başvur
                 </button>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
+      )}
+      
+      {/* Başvuru Modalı */}
+      {selectedProjectForApplication && (
+        <ApplicationModal
+          isOpen={isApplicationModalOpen}
+          onClose={handleCloseApplicationModal}
+          projectId={selectedProjectForApplication.id}
+          projectTitle={selectedProjectForApplication.title}
+        />
+      )}
+      
+      {/* Proje Önizleme Modalı */}
+      {previewProject && (
+        <ProjectPreviewModal
+          isOpen={isPreviewModalOpen}
+          onClose={handleClosePreviewModal}
+          project={previewProject}
+          onApply={() => openApplicationModal(previewProject.id, previewProject.title)}
+        />
       )}
     </div>
   );
