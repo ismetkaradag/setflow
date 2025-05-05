@@ -141,7 +141,7 @@ export default function MyProjectsPage() {
                       : 'bg-gray-100 text-gray-700'
                   }`}
                 >
-                  {getProjectStatusName(status)}
+                  {getProjectStatusName(status as Project['status'])}
                 </button>
               ))}
             </div>
