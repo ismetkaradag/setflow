@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { FiBell, FiCalendar, FiClock, FiFileText, FiMapPin } from 'react-icons/fi';
 import { projects } from '@/lib/data/projects';
 import { users } from '@/lib/data/users';
+import OnboardingModal from '@/components/onboarding/OnboardingModal';
+import SurveyModal from '@/components/onboarding/SurveyModal';
 
 // Demo için ilk kullanıcıyı (Derya Arslan) aktif kullanıcı kabul ediyoruz
 const activeUserId = '1';
@@ -13,13 +15,46 @@ export default function HomePage() {
   const [activeUser, setActiveUser] = useState(users.find(u => u.id === activeUserId));
   const [userProjects, setUserProjects] = useState<typeof projects>([]);
   
+  // Onboarding ve anket modalları için state
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [showSurvey, setShowSurvey] = useState(false);
+  
   useEffect(() => {
     // Kullanıcının projelerini filtrele
     const filteredProjects = projects.filter(project => 
       project.team?.some(member => member.userId === activeUserId)
     );
     setUserProjects(filteredProjects);
+    
+    // Onboarding ve anket gösterimi kontrolü
+    // Not: Bu değerler gerçek bir uygulamada backend'den gelir
+    setTimeout(() => {
+      const onboardingShown = localStorage.getItem('setflow_show_onboarding') === 'false';
+      const surveyCompleted = localStorage.getItem('setflow_survey_completed') === 'true';
+      
+      if (!onboardingShown) {
+        setShowOnboarding(true);
+      } else if (!surveyCompleted) {
+        setShowSurvey(true);
+      }
+    }, 1000); // 1 saniye gecikme ile göster
   }, []);
+  
+  // Onboarding kapatıldığında anket göster
+  const handleOnboardingClose = () => {
+    setShowOnboarding(false);
+    
+    // Onboarding kapandıktan sonra anket tamamlanmadıysa anket göster
+    const surveyCompleted = localStorage.getItem('setflow_survey_completed') === 'true';
+    if (!surveyCompleted) {
+      setShowSurvey(true);
+    }
+  };
+  
+  // Anketi kapat
+  const handleSurveyClose = () => {
+    setShowSurvey(false);
+  };
   
   // Bugünkü ve yaklaşan etkinlikler (demo veriler)
   const todayEvents = [
@@ -219,6 +254,18 @@ export default function HomePage() {
           ))}
         </div>
       </div>
+      
+      {/* Onboarding Modal */}
+      <OnboardingModal 
+        isOpen={showOnboarding} 
+        onClose={handleOnboardingClose} 
+      />
+      
+      {/* Anket Modal */}
+      <SurveyModal
+        isOpen={showSurvey}
+        onClose={handleSurveyClose}
+      />
     </div>
   );
 }
