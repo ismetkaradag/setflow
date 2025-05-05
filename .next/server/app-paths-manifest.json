@@ -1,4 +1,8 @@
 {
-  "/(main)/ayarlar/page": "app/(main)/ayarlar/page.js",
-  "/(main)/anasayfa/page": "app/(main)/anasayfa/page.js"
+  "/not-found": "app/not-found.js",
+  "/(main)/proje/[id]/page": "app/(main)/proje/[id]/page.js",
+  "/(main)/projelerim/page": "app/(main)/projelerim/page.js",
+  "/(main)/profil/page": "app/(main)/profil/page.js",
+  "/(main)/proje-bul/page": "app/(main)/proje-bul/page.js",
+  "/(main)/proje-olustur/page": "app/(main)/proje-olustur/page.js"
 }

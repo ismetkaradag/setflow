@@ -1,13 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FiUser, FiMail, FiPhone, FiMapPin, FiEdit, FiPlus, FiTrash2, FiSave, FiX, FiFile, FiUpload, FiDownload } from 'react-icons/fi';
+import Link from 'next/link';
+import { FiUser, FiMail, FiPhone, FiMapPin, FiEdit, FiPlus, FiTrash2, FiSave, FiX, FiFile, FiUpload, FiDownload, FiSettings, FiBell, FiMoon, FiGlobe, FiShield, FiHelpCircle, FiInfo, FiLogOut, FiChevronRight } from 'react-icons/fi';
+import { useRouter } from 'next/navigation';
 import { users, getRoleName } from '@/lib/data/users';
 
 // Demo için aktif kullanıcıyı belirliyoruz
 const activeUserId = '1'; // Derya Arslan
 
 export default function ProfilePage() {
+  const router = useRouter();
   const [activeUser, setActiveUser] = useState(users.find(u => u.id === activeUserId));
   const [isEditing, setIsEditing] = useState(false);
   const [editFormData, setEditFormData] = useState({
@@ -18,6 +21,12 @@ export default function ProfilePage() {
     location: '',
     bio: ''
   });
+  
+  // Ayarlar için state
+  const [darkMode, setDarkMode] = useState(false);
+  const [language, setLanguage] = useState('tr');
+  const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+  const [showSettingsSection, setShowSettingsSection] = useState(false);
   
   // Kullanıcı becerilerini düzenlemek için state
   const [skills, setSkills] = useState<string[]>([]);
@@ -90,6 +99,11 @@ export default function ProfilePage() {
     setIsEditing(false);
   };
   
+  const handleLogout = () => {
+    // Demo için giriş sayfasına yönlendir
+    router.push('/giris');
+  };
+  
   if (!activeUser) {
     return <div>Kullanıcı bulunamadı.</div>;
   }
@@ -110,6 +124,11 @@ export default function ProfilePage() {
   };
   
   const completionPercentage = calculateProfileCompletion();
+  
+  // Ayarlar bölümünü göster/gizle
+  const toggleSettingsSection = () => {
+    setShowSettingsSection(!showSettingsSection);
+  };
   
   return (
     <div className="space-y-6">
@@ -397,9 +416,14 @@ export default function ProfilePage() {
           ))}
         </div>
         
-        <button className="btn-outline w-full mt-4">
-          Yeni Proje Ekle
-        </button>
+        <div className="flex justify-between items-center mt-4">
+          <button className="btn-outline">
+            Yeni Proje Ekle
+          </button>
+          <Link href="/projelerim" className="text-primary hover:text-primary/80 text-sm">
+            Tüm Projelerim
+          </Link>
+        </div>
       </div>
       
       {/* CV Yükleme */}
@@ -439,33 +463,222 @@ export default function ProfilePage() {
       
       {/* Hesap Ayarları */}
       <div className="card">
-        <h2 className="text-lg font-medium mb-4">Hesap Ayarları</h2>
-        
-        <div className="space-y-4">
-          <div className="flex justify-between items-center pb-3 border-b border-gray-100">
-            <div>
-              <p className="font-medium">Bildirim Tercihleri</p>
-              <p className="text-sm text-gray-500">E-posta ve uygulama bildirimlerinizi yönetin</p>
-            </div>
-            <button className="text-primary">Düzenle</button>
-          </div>
-          
-          <div className="flex justify-between items-center pb-3 border-b border-gray-100">
-            <div>
-              <p className="font-medium">Gizlilik Ayarları</p>
-              <p className="text-sm text-gray-500">Profilinizin görünürlüğünü ayarlayın</p>
-            </div>
-            <button className="text-primary">Düzenle</button>
-          </div>
-          
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="font-medium">Şifre Değiştir</p>
-              <p className="text-sm text-gray-500">Hesap güvenliğinizi güncelleyin</p>
-            </div>
-            <button className="text-primary">Değiştir</button>
-          </div>
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-lg font-medium">Hesap Ayarları</h2>
+          <button 
+            onClick={toggleSettingsSection}
+            className="text-primary text-sm flex items-center gap-1"
+          >
+            {showSettingsSection ? (
+              <><FiX size={14} /> <span>Kapat</span></>
+            ) : (
+              <><FiSettings size={14} /> <span>Tüm Ayarlar</span></>
+            )}
+          </button>
         </div>
+        
+        {!showSettingsSection ? (
+          <div className="space-y-4">
+            <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+              <div>
+                <p className="font-medium">Bildirim Tercihleri</p>
+                <p className="text-sm text-gray-500">E-posta ve uygulama bildirimlerinizi yönetin</p>
+              </div>
+              <button className="text-primary">Düzenle</button>
+            </div>
+            
+            <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+              <div>
+                <p className="font-medium">Gizlilik Ayarları</p>
+                <p className="text-sm text-gray-500">Profilinizin görünürlüğünü ayarlayın</p>
+              </div>
+              <button className="text-primary">Düzenle</button>
+            </div>
+            
+            <div className="flex justify-between items-center">
+              <div>
+                <p className="font-medium">Şifre Değiştir</p>
+                <p className="text-sm text-gray-500">Hesap güvenliğinizi güncelleyin</p>
+              </div>
+              <button className="text-primary">Değiştir</button>
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-6">
+            {/* Görünüm ayarları */}
+            <div className="space-y-4">
+              <h3 className="font-medium border-b border-gray-100 pb-2">Görünüm</h3>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <FiMoon className="text-gray-500" size={20} />
+                  <span>Karanlık Mod</span>
+                </div>
+                <label className="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="sr-only peer"
+                    checked={darkMode}
+                    onChange={() => setDarkMode(!darkMode)}
+                  />
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                </label>
+              </div>
+              
+              <div className="flex items-center justify-between pt-2">
+                <div className="flex items-center gap-3">
+                  <FiGlobe className="text-gray-500" size={20} />
+                  <span>Dil</span>
+                </div>
+                <select
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block p-2"
+                >
+                  <option value="tr">Türkçe</option>
+                  <option value="en">İngilizce</option>
+                </select>
+              </div>
+            </div>
+            
+            {/* Bildirim ayarları */}
+            <div className="space-y-4">
+              <h3 className="font-medium border-b border-gray-100 pb-2">Bildirimler</h3>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <FiBell className="text-gray-500" size={20} />
+                  <span>Bildirimler</span>
+                </div>
+                <label className="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="sr-only peer"
+                    checked={notificationsEnabled}
+                    onChange={() => setNotificationsEnabled(!notificationsEnabled)}
+                  />
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                </label>
+              </div>
+              
+              {notificationsEnabled && (
+                <div className="space-y-3 pt-2 pl-8">
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id="notification-email"
+                      className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                      defaultChecked
+                    />
+                    <label htmlFor="notification-email" className="text-sm">
+                      E-posta bildirimleri
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id="notification-app"
+                      className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                      defaultChecked
+                    />
+                    <label htmlFor="notification-app" className="text-sm">
+                      Uygulama bildirimleri
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id="notification-sms"
+                      className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                    />
+                    <label htmlFor="notification-sms" className="text-sm">
+                      SMS bildirimleri
+                    </label>
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            {/* Gizlilik ve Güvenlik */}
+            <div className="space-y-4">
+              <h3 className="font-medium border-b border-gray-100 pb-2">Gizlilik ve Güvenlik</h3>
+              
+              <button className="flex items-center justify-between w-full text-left">
+                <div className="flex items-center gap-3">
+                  <FiShield className="text-gray-500" size={20} />
+                  <span>Hesap Güvenliği</span>
+                </div>
+                <FiChevronRight className="text-gray-400" />
+              </button>
+              
+              <div className="pt-2">
+                <button className="flex items-center justify-between w-full text-left">
+                  <div className="flex items-center gap-3">
+                    <FiShield className="text-gray-500" size={20} />
+                    <span>Gizlilik Ayarları</span>
+                  </div>
+                  <FiChevronRight className="text-gray-400" />
+                </button>
+              </div>
+              
+              <div className="pt-2">
+                <button className="flex items-center justify-between w-full text-left">
+                  <div className="flex items-center gap-3">
+                    <FiShield className="text-gray-500" size={20} />
+                    <span>İzinler ve Erişim</span>
+                  </div>
+                  <FiChevronRight className="text-gray-400" />
+                </button>
+              </div>
+            </div>
+            
+            {/* Yardım ve Destek */}
+            <div className="space-y-4">
+              <h3 className="font-medium border-b border-gray-100 pb-2">Yardım ve Destek</h3>
+              
+              <button className="flex items-center justify-between w-full text-left">
+                <div className="flex items-center gap-3">
+                  <FiHelpCircle className="text-gray-500" size={20} />
+                  <span>Sıkça Sorulan Sorular</span>
+                </div>
+                <FiChevronRight className="text-gray-400" />
+              </button>
+              
+              <div className="pt-2">
+                <button className="flex items-center justify-between w-full text-left">
+                  <div className="flex items-center gap-3">
+                    <FiHelpCircle className="text-gray-500" size={20} />
+                    <span>Destek Talebi Oluştur</span>
+                  </div>
+                  <FiChevronRight className="text-gray-400" />
+                </button>
+              </div>
+              
+              <div className="pt-2">
+                <button className="flex items-center justify-between w-full text-left">
+                  <div className="flex items-center gap-3">
+                    <FiInfo className="text-gray-500" size={20} />
+                    <span>Hakkında</span>
+                  </div>
+                  <div className="text-sm text-gray-500">v1.0.0</div>
+                </button>
+              </div>
+            </div>
+            
+            {/* Çıkış Yap */}
+            <div className="pt-6">
+              <button
+                onClick={handleLogout}
+                className="flex items-center justify-center gap-2 w-full text-red-600 border border-red-200 bg-red-50 rounded-md py-2 hover:bg-red-100 transition-colors"
+              >
+                <FiLogOut size={18} />
+                <span>Çıkış Yap</span>
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

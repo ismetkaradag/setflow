@@ -116,39 +116,54 @@ export default function CreateProjectPage() {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">
-                Proje Türü *
-              </label>
-              <div className="grid grid-cols-2 gap-4">
-                <button
-                  type="button"
-                  onClick={() => handleTypeSelect('film')}
-                  className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
-                    ${formData.type === 'film' 
-                      ? 'border-primary bg-primary/5' 
-                      : 'border-gray-200 hover:border-gray-300'}`}
-                >
-                  <FiFilm size={24} className={formData.type === 'film' ? 'text-primary' : 'text-gray-500'} />
-                  <span className={`mt-2 font-medium ${formData.type === 'film' ? 'text-primary' : 'text-gray-700'}`}>
-                    Film
-                  </span>
-                </button>
-                
-                <button
-                  type="button"
-                  onClick={() => handleTypeSelect('series')}
-                  className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
-                    ${formData.type === 'series' 
-                      ? 'border-primary bg-primary/5' 
-                      : 'border-gray-200 hover:border-gray-300'}`}
-                >
-                  <FiTv size={24} className={formData.type === 'series' ? 'text-primary' : 'text-gray-500'} />
-                  <span className={`mt-2 font-medium ${formData.type === 'series' ? 'text-primary' : 'text-gray-700'}`}>
-                    Dizi
-                  </span>
-                </button>
-              </div>
-            </div>
+  <label className="block text-sm font-medium text-gray-700 mb-3">
+    Proje Türü *
+  </label>
+  <div className="grid grid-cols-3 gap-4">
+    <button
+      type="button"
+      onClick={() => handleTypeSelect('film')}
+      className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
+        ${formData.type === 'film' 
+          ? 'border-primary bg-primary/5' 
+          : 'border-gray-200 hover:border-gray-300'}`}
+    >
+      <FiFilm size={24} className={formData.type === 'film' ? 'text-primary' : 'text-gray-500'} />
+      <span className={`mt-2 font-medium ${formData.type === 'film' ? 'text-primary' : 'text-gray-700'}`}>
+        Film
+      </span>
+    </button>
+
+    <button
+      type="button"
+      onClick={() => handleTypeSelect('series')}
+      className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
+        ${formData.type === 'series' 
+          ? 'border-primary bg-primary/5' 
+          : 'border-gray-200 hover:border-gray-300'}`}
+    >
+      <FiTv size={24} className={formData.type === 'series' ? 'text-primary' : 'text-gray-500'} />
+      <span className={`mt-2 font-medium ${formData.type === 'series' ? 'text-primary' : 'text-gray-700'}`}>
+        Dizi
+      </span>
+    </button>
+
+    <button
+      type="button"
+      onClick={() => handleTypeSelect('digital')}
+      className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
+        ${formData.type === 'digital' 
+          ? 'border-primary bg-primary/5' 
+          : 'border-gray-200 hover:border-gray-300'}`}
+    >
+      <FiMonitor size={24} className={formData.type === 'digital' ? 'text-primary' : 'text-gray-500'} />
+      <span className={`mt-2 font-medium ${formData.type === 'digital' ? 'text-primary' : 'text-gray-700'}`}>
+        Dijital Platform
+      </span>
+    </button>
+  </div>
+</div>
+
             
             <div>
               <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">

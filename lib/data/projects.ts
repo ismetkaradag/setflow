@@ -1,4 +1,4 @@
-export type ProjectType = 'film' | 'series';
+export type ProjectType = 'film' | 'series' | 'digital';
 export type ProjectStatus = 'planning' | 'pre_production' | 'active' | 'post_production' | 'completed';
 export type ProjectPlatform = 'netflix' | 'prime' | 'disney' | 'tv' | 'cinema' | 'other';
 
@@ -134,9 +134,18 @@ export const projects: Project[] = [
   }
 ];
 
-// Helper fonksiyonlar
-export const getProjectTypeName = (type: ProjectType): string => {
-  return type === 'film' ? 'Film' : 'Dizi';
+
+export const getProjectTypeName = (type: ProjectType) => {
+  switch (type) {
+    case 'film':
+      return 'Film';
+    case 'series':
+      return 'Dizi';
+    case 'digital':
+      return 'Dijital Platform';
+    default:
+      return 'Bilinmeyen';
+  }
 };
 
 export const getProjectStatusName = (status: ProjectStatus): string => {

@@ -7,6 +7,7 @@ import { FiArrowLeft, FiCalendar, FiDollarSign, FiUser, FiMonitor, FiTag, FiCloc
 import { projects, getProjectTypeName, getProjectStatusName, getPlatformName } from '@/lib/data/projects';
 import { users, getRoleName } from '@/lib/data/users';
 import ApplicationModal from '@/components/project/ApplicationModal';
+import MoodboardManager from '@/components/moodboard/MoodboardManager';
 
 type Tab = 'callsheet' | 'script' | 'timecode' | 'continuity' | 'preparation' | 'moodboard' | 'equipment';
 
@@ -266,18 +267,8 @@ export default function ProjectDetailPage() {
               </table>
               <button className="btn-outline">Yeni Timecode Ekle</button>
             </div>
-          ) : activeTab === 'moodboard' && project.moodboard ? (
-            <div className="space-y-4">
-              <h3 className="font-medium">Moodboard</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {project.moodboard.map((image, index) => (
-                  <div key={index} className="bg-gray-100 rounded-lg aspect-video flex items-center justify-center">
-                    <div className="text-gray-400">Görsel {index + 1}</div>
-                  </div>
-                ))}
-              </div>
-              <button className="btn-outline">Görsel Ekle</button>
-            </div>
+          ) : activeTab === 'moodboard' ? (
+            <MoodboardManager projectId={project.id} />
           ) : activeTab === 'equipment' && project.equipment ? (
             <div className="space-y-4">
               <h3 className="font-medium">Ekipman Listesi</h3>

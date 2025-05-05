@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FiHome, FiSearch, FiPlus, FiUser, FiSettings } from 'react-icons/fi';
+import { FiHome, FiSearch, FiPlus, FiUser, FiFolder } from 'react-icons/fi';
 
 const MobileNavbar = () => {
   const pathname = usePathname();
@@ -28,14 +28,14 @@ const MobileNavbar = () => {
         <span>Oluştur</span>
       </Link>
       
+      <Link href="/projelerim" className={`nav-item ${isActive('/projelerim') ? 'active' : ''}`}>
+        <FiFolder size={20} />
+        <span>Projelerim</span>
+      </Link>
+      
       <Link href="/profil" className={`nav-item ${isActive('/profil') ? 'active' : ''}`}>
         <FiUser size={20} />
         <span>Profil</span>
-      </Link>
-      
-      <Link href="/ayarlar" className={`nav-item ${isActive('/ayarlar') ? 'active' : ''}`}>
-        <FiSettings size={20} />
-        <span>Ayarlar</span>
       </Link>
     </div>
   );
