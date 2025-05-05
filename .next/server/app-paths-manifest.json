@@ -1,4 +1,4 @@
 {
-  "/(main)/anasayfa/page": "app/(main)/anasayfa/page.js",
-  "/(auth)/giris/page": "app/(auth)/giris/page.js"
+  "/(main)/ayarlar/page": "app/(main)/ayarlar/page.js",
+  "/(main)/anasayfa/page": "app/(main)/anasayfa/page.js"
 }

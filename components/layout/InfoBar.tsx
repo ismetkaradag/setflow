@@ -34,7 +34,7 @@ const InfoBar: React.FC<InfoBarProps> = () => {
   };
   
   return (
-    <div className="sticky top-0 bg-white border-b border-gray-200 shadow-xs z-40 h-6 text-xs">
+    <div className="sticky top-0 bg-white border-b border-gray-200 shadow-xs z-40 h-12 text-xs">
       {/* Ana bilgi çubuğu */}
       <div className="px-2 py-1 flex justify-between items-center h-full">
         <div className="flex items-center gap-2">
