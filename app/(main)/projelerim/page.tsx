@@ -8,19 +8,19 @@ import {
   FiTag, FiSearch, FiInfo
 } from 'react-icons/fi';
 
-import { projects, getProjectTypeName, getProjectStatusName, getPlatformName } from '@/lib/data/projects';
-import { users, getRoleName } from '@/lib/data/users';
+import { projects, getProjectTypeName, getProjectStatusName, getPlatformName, Project } from '@/lib/data/projects';
+import { users, getRoleName, UserRole } from '@/lib/data/users';
 import ProjectPreviewModal from '@/components/project/ProjectPreviewModal';
 
 const activeUserId = '1'; // Derya Arslan
 
 export default function MyProjectsPage() {
   const [activeUser, setActiveUser] = useState(users.find(u => u.id === activeUserId));
-  const [userProjects, setUserProjects] = useState([]);
+  const [userProjects, setUserProjects] = useState<Project[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [showFilters, setShowFilters] = useState(false);
-  const [filters, setFilters] = useState({ status: [], role: [] });
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [filters, setFilters] = useState<{ status: string[]; role: string[] }>({ status: [], role: [] });
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showProjectModal, setShowProjectModal] = useState(false);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function MyProjectsPage() {
     }
   }, [activeUser, searchTerm, filters]);
 
-  const handleFilterChange = (filterType, value) => {
+  const handleFilterChange = (filterType: 'status' | 'role', value: string) => {
     setFilters(prev => {
       const currentFilters = [...prev[filterType]];
       return {
@@ -69,18 +69,18 @@ export default function MyProjectsPage() {
     });
   };
 
-  const getUserRoleInProject = (project) => {
+  const getUserRoleInProject = (project: Project) => {
     if (project.director === activeUser?.id) return 'director';
     const member = project.team?.find(m => m.userId === activeUser?.id);
     return member ? member.role : null;
   };
 
-  const handleProjectClick = (project) => {
+  const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
     setShowProjectModal(true);
   };
 
-  const renderUserAvatar = (user) => (
+  const renderUserAvatar = (user: { avatar?: string; name: string; surname: string }) => (
     user?.avatar ? (
       <div className="w-8 h-8 rounded-full overflow-hidden mr-2 relative">
         <Image src={user.avatar} alt={`${user.name} ${user.surname}`} fill className="object-cover" />
@@ -163,7 +163,7 @@ export default function MyProjectsPage() {
                       : 'bg-gray-100 text-gray-700'
                   }`}
                 >
-                  {getRoleName(role)}
+                  {getRoleName(role as UserRole)}
                 </button>
               ))}
             </div>
@@ -214,7 +214,7 @@ export default function MyProjectsPage() {
                       </div>
                       <div className="flex items-center text-xs text-gray-600">
                         <FiUser size={12} className="mr-1" />
-                        <span>{getRoleName(userRole)}</span>
+                        <span>{getRoleName(userRole as UserRole)}</span>
                       </div>
                     </div>
                     <p className="text-xs text-gray-500 mt-1 truncate">{project.description.substring(0, 70)}...</p>
