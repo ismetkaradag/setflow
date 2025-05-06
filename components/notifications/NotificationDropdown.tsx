@@ -191,7 +191,7 @@ const NotificationDropdown: React.FC<NotificationDropdownProps> = ({ className }
                     href={notification.link} 
                     key={notification.id}
                     className={`block border-b border-gray-100 last:border-b-0 hover:bg-gray-50 transition-colors ${!notification.isRead ? 'bg-blue-50' : ''}`}
-                    onClick={() => markAsRead(notification.id, event)}
+                    onClick={(e) => markAsRead(notification.id, e)}
                   >
                     <div className="flex p-3 gap-3">
                       {/* İkon veya avatar */}
