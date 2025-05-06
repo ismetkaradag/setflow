@@ -57,7 +57,7 @@ export const projects: Project[] = [
         notes: 'Kalabalık sahneler için figüranlar hazır olacak.'
       }
     ],
-    script: 'İSTANBUL RÜYASI\\n\\nSAHNE 1 - DIŞ/GÜN - SULTANAHMET MEYDANI\\n\\nALİ ve ZEYNEP kalabalık meydanda buluşurlar...',
+    script: 'İSTANBUL RÜYASI\\n\\nSAHNE 1 - DIŞ/GÜN - SULTANAHMET MEYDANI\\n\\nALİ ve ZEYNEP kalabalık meydanda buluşurlar...\\n\\nALİ\\nZeynep, bu tarihi eser nerede?\\n\\nZEYNEP\\nBilmiyorum, ama peşindeyiz...\\n \\n\\nSAHNE 2 - İÇ/GÜNDÜZ - KAFETERYA\\n\\nALİ ve ZEYNEP kafede otururlar...\\n\\nALİ\\nBu iş çok tehlikeli...\\n\\nZEYNEP\\nAma bunu başarmalıyız...\\n \\n',
     timecode: [
       { scene: '1A', startTime: '00:00:15:00', endTime: '00:04:23:10', status: 'completed' }
     ],

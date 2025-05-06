@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FiBell, FiCalendar, FiClock, FiFileText, FiMapPin } from 'react-icons/fi';
+import { FiCalendar, FiClock, FiFileText, FiMapPin } from 'react-icons/fi';
 import { projects } from '@/lib/data/projects';
 import { users } from '@/lib/data/users';
 import OnboardingModal from '@/components/onboarding/OnboardingModal';
@@ -97,38 +97,10 @@ export default function HomePage() {
     }
   ];
   
-  // Bildirimler (demo veriler)
-  const notifications = [
-    {
-      id: '1',
-      title: 'İstanbul Rüyası projesi için yeni callsheet yayınlandı',
-      time: '1 saat önce',
-      read: false
-    },
-    {
-      id: '2',
-      title: 'Senaryo dosyası güncellendi',
-      time: '3 saat önce',
-      read: true
-    },
-    {
-      id: '3',
-      title: 'Kaan Aytekin projeye katıldı',
-      time: '1 gün önce',
-      read: true
-    }
-  ];
-  
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div>
         <h1 className="text-2xl font-bold">Merhaba, {activeUser?.name}</h1>
-        <div className="relative">
-          <FiBell size={24} className="text-gray-700" />
-          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
-            2
-          </span>
-        </div>
       </div>
       
       {/* Bugünkü etkinlikler */}
@@ -224,32 +196,6 @@ export default function HomePage() {
                     : event.type === 'preparation'
                       ? 'Hazırlık'
                       : 'Çekim'}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      
-      {/* Bildirimler */}
-      <div className="space-y-4">
-        <h2 className="text-lg font-medium">Bildirimler</h2>
-        
-        <div className="space-y-3">
-          {notifications.map(notification => (
-            <div 
-              key={notification.id} 
-              className={`card ${!notification.read ? 'bg-blue-50 border-blue-100' : ''}`}
-            >
-              <div className="flex items-start gap-3">
-                <div className={`p-2 rounded-full ${!notification.read ? 'bg-blue-100' : 'bg-gray-100'}`}>
-                  <FiFileText className={!notification.read ? 'text-blue-600' : 'text-gray-500'} />
-                </div>
-                <div>
-                  <h3 className={`font-medium ${!notification.read ? 'text-blue-800' : ''}`}>
-                    {notification.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 mt-1">{notification.time}</p>
                 </div>
               </div>
             </div>

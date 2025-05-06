@@ -229,7 +229,7 @@ export default function ProjectDetailPage() {
             <div className="space-y-4">
               <h3 className="font-medium">Senaryo</h3>
               <div className="bg-gray-50 p-4 rounded-lg">
-                <pre className="whitespace-pre-wrap text-sm font-mono">{project.script}</pre>
+                <pre className="whitespace-pre-wrap text-sm font-mono">{project.script.replaceAll('\\n', '\n')}</pre>
               </div>
               <div className="flex gap-3">
                 <button className="btn-outline">Düzenle</button>
