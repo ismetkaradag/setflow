@@ -1,4 +1,0 @@
-{
-  "/(main)/anasayfa/page": "app/(main)/anasayfa/page.js",
-  "/(main)/proje/[id]/page": "app/(main)/proje/[id]/page.js"
-}
