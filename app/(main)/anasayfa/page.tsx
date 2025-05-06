@@ -65,6 +65,14 @@ export default function HomePage() {
       time: '08:00 - 17:00',
       location: 'Sultanahmet Meydanı',
       type: 'shooting' // shooting, meeting, preparation
+    },
+    {
+      id: '2',
+      projectId: '1',
+      title: 'Senaryo Okuma',
+      time: '19:00 - 21:00',
+      location: 'Zoom',
+      type: 'meeting'
     }
   ];
   
@@ -130,7 +138,7 @@ export default function HomePage() {
         {todayEvents.length > 0 ? (
           <div className="space-y-3">
             {todayEvents.map(event => (
-              <div key={event.id} className="card border-l-4 border-l-primary">
+              <div key={event.id} className="card border-l-4 border-l-primary cursor-pointer" onClick={() => {window.location.href = `/proje/${event.projectId}`}}>
                 <div className="flex justify-between items-start">
                   <div>
                     <h3 className="font-medium">{event.title}</h3>
@@ -143,12 +151,6 @@ export default function HomePage() {
                       <span>{event.location}</span>
                     </div>
                   </div>
-                  <Link 
-                    href={`/proje/${event.projectId}`} 
-                    className="px-3 py-1 bg-primary/10 text-primary text-sm rounded"
-                  >
-                    Detaylar
-                  </Link>
                 </div>
               </div>
             ))}
@@ -162,7 +164,7 @@ export default function HomePage() {
       <div className="space-y-4">
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-medium">Projelerim</h2>
-          <Link href="/proje-bul" className="text-primary text-sm">
+          <Link href="/projelerim" className="text-primary text-sm">
             Tümünü Gör
           </Link>
         </div>

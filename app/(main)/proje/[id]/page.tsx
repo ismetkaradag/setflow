@@ -70,7 +70,7 @@ export default function ProjectDetailPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-2">
-        <Link href="/proje-bul" className="p-2 bg-gray-100 rounded-full">
+        <Link href="/projelerim" className="p-2 bg-gray-100 rounded-full">
           <FiArrowLeft size={16} />
         </Link>
         <h1 className="text-2xl font-bold">{project.title}</h1>
