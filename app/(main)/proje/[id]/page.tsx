@@ -124,16 +124,6 @@ export default function ProjectDetailPage() {
                 <span>{getProjectStatusName(project.status)}</span>
               </div>
             </div>
-            
-            {project.budget && (
-              <div>
-                <span className="text-sm text-gray-500">Bütçe</span>
-                <div className="flex items-center gap-2 mt-1">
-                  <FiDollarSign className="text-gray-400" />
-                  <span>{project.budget.toLocaleString('tr-TR')} ₺</span>
-                </div>
-              </div>
-            )}
           </div>
         </div>
         
