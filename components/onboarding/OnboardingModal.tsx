@@ -67,7 +67,7 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClose }) =>
           
           {/* Adım içeriği */}
           {currentStep === 1 && (
-            <div className="text-center space-y-6">
+            <div className=" space-y-6">
               <div className="mx-auto bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center">
                 <FiInfo size={32} className="text-primary" />
               </div>
@@ -79,7 +79,7 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClose }) =>
           )}
           
           {currentStep === 2 && (
-            <div className="text-center space-y-6">
+            <div className=" space-y-6">
               <div className="mx-auto bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center">
                 <FiUsers size={32} className="text-primary" />
               </div>
@@ -100,7 +100,7 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClose }) =>
           )}
           
           {currentStep === 3 && (
-            <div className="text-center space-y-6">
+            <div className=" space-y-6">
               <div className="mx-auto bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center">
                 <FiCalendar size={32} className="text-primary" />
               </div>
@@ -142,7 +142,7 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClose }) =>
           )}
           
           {currentStep === 4 && (
-            <div className="text-center space-y-6">
+            <div className=" space-y-6">
               <div className="mx-auto bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center">
                 <FiCamera size={32} className="text-primary" />
               </div>

@@ -28,7 +28,7 @@ const MobileNavbar = () => {
         <span>Oluştur</span>
       </Link>
       
-      <Link href="/projelerim" className={`nav-item ${isActive('/projelerim') ? 'active' : ''}`}>
+      <Link href="/projelerim" className={`nav-item ${isActive('/projelerim') || pathname.startsWith('/proje/') ? 'active' : ''}`}>
         <FiFolder size={20} />
         <span>Projelerim</span>
       </Link>

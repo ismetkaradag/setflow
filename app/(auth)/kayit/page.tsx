@@ -41,7 +41,7 @@ export default function RegisterPage() {
   
   return (
     <div className="space-y-6">
-      <div className="text-center mb-8">
+      <div className=" mb-8">
       <div>
         <img src="/logo.png" className=' w-[200px]' alt="" />
       </div>
@@ -50,7 +50,7 @@ export default function RegisterPage() {
       
       {step === 1 ? (
         <>
-          <div className="text-center mb-4">
+          <div className="mb-4">
             <h2 className="text-xl font-medium">Set ekibinde rolünüz nedir?</h2>
             <p className="text-sm text-gray-500 mt-1">Erişim yetkiniz rolünüze göre belirlenecektir.</p>
           </div>
