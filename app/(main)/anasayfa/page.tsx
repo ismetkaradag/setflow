@@ -98,7 +98,7 @@ export default function HomePage() {
   ];
   
   return (
-    <div className="space-y-6">
+    <div className="">
       <div>
         <h1 className="text-2xl font-bold">Merhaba, {activeUser?.name}</h1>
       </div>
@@ -144,7 +144,7 @@ export default function HomePage() {
         <div className="space-y-3">
           {userProjects.map(project => (
             <Link href={`/proje/${project.id}`} key={project.id}>
-              <div className="card hover:shadow-md transition-shadow">
+              <div className="card hover:shadow-md transition-shadow mb-3">
                 <h3 className="font-medium">{project.title}</h3>
                 <div className="flex justify-between text-sm mt-2">
                   <span className="bg-gray-100 px-2 py-0.5 rounded">
@@ -162,7 +162,7 @@ export default function HomePage() {
       </div>
       
       {/* Yaklaşan etkinlikler */}
-      <div className="space-y-4">
+      <div className="">
         <h2 className="text-lg font-medium">Yaklaşan Etkinlikler</h2>
         
         <div className="space-y-3">

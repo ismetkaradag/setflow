@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { FiChevronDown, FiChevronUp, FiMapPin, FiUsers, FiVideo, FiClock } from 'react-icons/fi';
 import NotificationDropdown from '@/components/notifications/NotificationDropdown';
+import Messages from '@/components/messages/Messages';
 
 // Demo veri - gerçek uygulamada API'dan alınır
 const activeSceneData = {
@@ -35,38 +36,41 @@ const InfoBar: React.FC<InfoBarProps> = () => {
   };
   
   return (
-    <div className="sticky top-0 bg-white border-b border-gray-200 shadow-xs z-40 h-12 mb-2 text-xs">
+    <div className="sticky top-0 bg-white border-b border-gray-200 shadow-xs z-10 h-12 mb-2 text-xs">
       {/* Ana bilgi çubuğu */}
       <div className="px-2 py-1 flex justify-between items-center h-full">
         {/* Sol taraf - Sahne bilgileri */}
         <div className="flex items-center gap-2">
+          
           <div className="flex items-center">
             <FiVideo className="text-primary mr-1" size={10} />
-            <span className="font-medium">Sahne {activeSceneData.sceneNumber}</span>
+            <span className="font-medium">{activeSceneData.sceneNumber}</span>
           </div>
           
           <div className="flex items-center text-gray-600">
             <FiClock className="mr-1" size={10} />
             <span>{activeSceneData.time}</span>
           </div>
-        </div>
-        
-        {/* Sağ taraf - Lokasyon ve Bildirim */}
-        <div className="flex items-center gap-4">
           {/* Lokasyon butonu */}
           <button 
             onClick={toggleExpand}
             className="flex items-center gap-1 text-gray-600"
           >
+            
             <FiMapPin className="text-gray-500" size={10} />
-            <span className="max-w-[140px] truncate">{activeSceneData.location}</span>
+            <span className="max-w-[90px] truncate">{activeSceneData.location}</span>
             {isExpanded ? (
               <FiChevronUp className="text-gray-500" size={10} />
             ) : (
               <FiChevronDown className="text-gray-500" size={10} />
             )}
           </button>
-          
+        </div>
+        
+        
+        {/* Sağ taraf - Lokasyon ve Bildirim */}
+        <div className="flex items-center gap-4">
+          <Messages />
           {/* Bildirim ikonu ve dropdown */}
           <NotificationDropdown />
         </div>
@@ -74,7 +78,8 @@ const InfoBar: React.FC<InfoBarProps> = () => {
       
       {/* Genişletilmiş detay alanı */}
       {isExpanded && (
-        <div className="px-2 py-2 bg-gray-50 border-t border-gray-200 animate-fadeIn text-xs">
+        <div className="z-[1200] px-2 py-2 bg-gray-50 border-t border-gray-200 animate-fadeIn text-xs">
+          
           <div className="flex items-center gap-1 mb-1">
             <FiUsers size={10} className="text-primary" />
             <h4 className="font-medium">Oyuncular</h4>

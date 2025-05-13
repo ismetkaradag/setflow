@@ -135,8 +135,8 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose }) => {
   };
   
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-50 p-4">
-      <div className="bg-white rounded-lg w-full max-w-lg max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-50">
+      <div className="bg-white rounded-lg w-full max-w-lg max-h-[90vh] overflow-y-auto my-4 mx-4 ">
         <div className="flex justify-between items-center p-4 border-b border-gray-200">
           <h3 className="font-medium">Hızlı Anket</h3>
           <button 
@@ -235,7 +235,7 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose }) => {
           <div className="flex justify-between mt-8 pt-4 border-t border-gray-200">
             <div>
               {currentQuestion === questions.length - 1 && (
-                <p className="text-sm text-gray-500">
+                <p className="text-xs text-gray-500">
                   Yanıtlarınız deneyiminizi kişiselleştirmemize yardımcı olacak
                 </p>
               )}
@@ -245,7 +245,7 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose }) => {
               {currentQuestion > 0 && (
                 <button
                   onClick={handleBack}
-                  className="btn-outline px-3 py-1 text-sm"
+                  className="btn-outline px-3 py-1 text-sm max-h-fit"
                 >
                   Geri
                 </button>
@@ -254,9 +254,8 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose }) => {
               <button
                 onClick={handleNext}
                 disabled={!isAnswered()}
-                className={`btn-primary px-4 py-1 text-sm flex items-center gap-1 ${
-                  !isAnswered() ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+                className={`btn-primary px-4 py-1 text-sm flex items-center gap-1 max-h-fit
+                  ${!isAnswered() ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 {isLastQuestion ? 'Tamamla' : 'Devam Et'}
                 {!isLastQuestion && <FiArrowRight size={16} />}

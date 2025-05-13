@@ -656,7 +656,7 @@ export default function ProjectDetailPage() {
   return (
     <div className="min-h-screen bg-gray-100 pb-20">
       {/* Üst bilgi çubuğu */}
-      <div className="sticky top-0 bg-white border-b border-gray-200 shadow-xs z-40">
+      <div className="sticky top-0 bg-white border-b border-gray-200 shadow-xs">
         <div className="px-3 py-2 flex items-center justify-between">
           <Link href="/projelerim" className="flex items-center gap-1 text-sm">
             <FiChevronLeft size={16} />
@@ -809,7 +809,7 @@ export default function ProjectDetailPage() {
             </div>
             
             <div onClick={() => openFullComponent(component.id)}>
-              
+                {viewMode === 'list' && renderComponentContent(component.id)}
             </div>
           </div>
         ))}

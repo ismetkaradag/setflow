@@ -183,7 +183,7 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClose }) =>
               
               <button
                 onClick={handleNext}
-                className="btn-primary px-4 py-1 text-sm flex items-center gap-1"
+                className="btn-primary px-4 py-1 text-sm flex items-center gap-1 text-nowrap"
               >
                 {currentStep === totalSteps ? 'Tamamla' : 'Devam Et'}
                 {currentStep !== totalSteps && <FiArrowRight size={16} />}
