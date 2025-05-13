@@ -28,7 +28,7 @@ const demoMessages = [
       { text: 'Bu arada, yeni çekim planına göz attın mı?', time: '50dk önce', from: 'Hasan' },
       { text: 'Evet, göz attım. Her şey yolunda görünüyor.', time: '48dk önce', from: 'Me' },
       { text: 'Harika, teşekkürler!', time: '45dk önce', from: 'Hasan' },
-      { text: 'Rica ederim, her zaman yardımcı olmaya hazırım.', time: '43dk önce', from: 'Me' }
+      { text: 'Bir şey değil.', time: '43dk önce', from: 'Me' },
     ]
   },
   {
@@ -93,7 +93,7 @@ export default function MessageDetailPage() {
             }`}
           >
             <div
-              className={` w-3/4  px-3 py-2 rounded-lg text-sm shadow ${
+              className={` max-w-[75%] w-fit  px-3 py-2 rounded-lg text-sm shadow ${
                 msg.from === 'Me'
                   ? 'bg-primary text-white rounded-tr-none'
                   : 'bg-gray-100 text-gray-800 rounded-tl-none'
@@ -107,14 +107,22 @@ export default function MessageDetailPage() {
       </div>
 
       {/* Mesaj Yazma Alanı */}
-      <div className="absolute bottom-16 w-[86%] flex items-center border-t border-gray-200 pt-2">
+      <div className="sticky bottom-12 w-[85vw] flex items-center border-gray-200 pt-2">
         <input
           type="text"
           placeholder="Mesaj yaz..."
           className="flex-1 border border-gray-200 rounded-full px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+          //when on click go to the bottom
+          onFocus={() => {
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: 'smooth',
+            });
+          }
+          }
         />
-        <button className="ml-2 text-primary p-2 hover:bg-gray-100 rounded-full">
-          <FiSend size={18} />
+        <button className=" text-primary p-2 ml-1 hover:bg-gray-100 rounded-full bg-white">
+          <FiSend size={20} />
         </button>
       </div>
     </div>
