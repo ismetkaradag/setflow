@@ -51,6 +51,11 @@ export default function MessagesPage() {
           <FiArrowLeft />
         </Link>
         <h1 className="text-lg font-semibold">Mesajlar</h1>
+        <div className="ml-auto">
+            <Link href="/mesajlar/yeni" className="text-primary text-sm">
+                Yeni Mesaj
+            </Link>
+        </div>
       </div>
 
       {/* Arama çubuğu */}
