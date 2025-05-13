@@ -164,7 +164,7 @@ const NotificationDropdown: React.FC<NotificationDropdownProps> = ({ className }
       
       {/* Bildirim dropdown menüsü */}
       {isOpen && (
-        <div className="absolute right-0 mt-1 w-80 max-h-[80vh] overflow-y-auto bg-white rounded-lg shadow-lg border border-gray-200 z-50 animate-fadeIn">
+        <div className="absolute right-0 mt-1 w-72 max-h-[76vh] overflow-y-auto bg-white rounded-lg shadow-lg border border-gray-200 z-50 animate-fadeIn">
           {/* Başlık */}
           <div className="flex items-center justify-between p-3 border-b border-gray-100">
             <h3 className="font-medium">Bildirimler</h3>
