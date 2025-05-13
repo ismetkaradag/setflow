@@ -70,9 +70,10 @@ const InfoBar: React.FC<InfoBarProps> = () => {
         
         {/* Sağ taraf - Lokasyon ve Bildirim */}
         <div className="flex items-center gap-4">
-          <Messages />
+          
           {/* Bildirim ikonu ve dropdown */}
           <NotificationDropdown />
+          <Messages />
         </div>
       </div>
       
