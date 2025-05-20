@@ -86,6 +86,10 @@ const AddAlbumModal: React.FC<AddAlbumModalProps> = ({ isOpen, onClose, onSubmit
               className="input"
               placeholder="Albüm açıklaması..."
             />
+            <div className="text-[10px] text-gray-500 mt-1 w-full text-end">
+              {description.length} / 200
+            </div>
+            
           </div>
           
           <div className="pt-2 flex justify-end">

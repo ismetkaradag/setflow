@@ -45,7 +45,11 @@ import {
   FiImage,
   FiAlertCircle,
   FiCheck,
-  FiX
+  FiX,
+  FiDownload,
+  FiShare,
+  FiShare2,
+  FiAperture
 } from 'react-icons/fi';
 import { projects, getProjectTypeName, getProjectStatusName, getPlatformName } from '@/lib/data/projects';
 import { users, getRoleName } from '@/lib/data/users';
@@ -137,7 +141,14 @@ export default function ProjectDetailPage() {
     
     setComponents(items);
   };
-  
+  const formatDate = (date: string) => {
+    const months = [
+      'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+      'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'
+    ];
+    const d = new Date(date);
+    return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+  }
   // Drag and drop işlevi
   const handleDragEnd = (result: { destination: { index: number | undefined; }; source: { index: number | undefined; }; }) => {
     // result objesinin geçerli olduğundan emin ol
@@ -273,10 +284,9 @@ export default function ProjectDetailPage() {
         
       case 'script':
         return project.script ? (
-          <div className="p-4 max-h-[80vh] overflow-y-auto">
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <div className="font-bold text-center text-xl mb-6">{project.title}</div>
-              <div className="screenplay-format space-y-1">
+          <div className="p-4 max-h-[30vh] overflow-y-auto">
+            <div className="bg-white rounded-lg border border-gray-200 p-6 ">
+              <div className="screenplay-format space-y-1 text-[10px] ">
                 {formatScript(project.script)}
               </div>
             </div>
@@ -431,7 +441,7 @@ export default function ProjectDetailPage() {
       case 'preparationStatus':
         return project.preparationStatus ? (
           <div className="p-4 max-h-[80vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex flex-col justify-between mb-4">
               <div className="text-sm">
                 <span className="font-medium">Tamamlanan:</span>{' '}
                 {project.preparationStatus.filter(item => item.status === 'completed').length} / {project.preparationStatus.length}
@@ -455,21 +465,21 @@ export default function ProjectDetailPage() {
             <div className="space-y-3">
               {project.preparationStatus.map((item, index) => (
                 <div key={index} className="bg-white rounded-lg border border-gray-200 p-4">
-                  <div className="flex justify-between items-start">
+                  <div className="flex flex-col justify-between items-start">
                     <div>
-                      <div className="flex items-center">
-                        <div className={`w-2 h-2 rounded-full mr-2 ${
+                      <div className="flex items-center w-full">
+                        <h3 className="font-medium">{item.title}</h3>
+                        <div className={`w-2 h-2 rounded-full ms-auto ${
                           item.status === 'completed' ? 'bg-green-500' :
                           item.status === 'in_progress' ? 'bg-blue-500' :
                           item.status === 'issue' ? 'bg-red-500' :
                           item.status === 'delayed' ? 'bg-yellow-500' :
                           'bg-gray-400'
                         }`}></div>
-                        <h3 className="font-medium">{item.title}</h3>
                       </div>
                       <p className="text-sm text-gray-600 mt-1">{item.description}</p>
                     </div>
-                    <div className="flex space-x-2">
+                    <div className="flex space-x-2 mt-2 w-full">
                       <span className={`text-xs px-2 py-1 rounded-full ${getStatusColor(item.status)}`}>
                         {item.status === 'completed' ? 'Tamamlandı' :
                          item.status === 'in_progress' ? 'Devam Ediyor' :
@@ -488,7 +498,7 @@ export default function ProjectDetailPage() {
                   
                   <div className="grid grid-cols-2 gap-2 mt-3 text-xs">
                     <div>
-                      <span className="text-gray-500">Kategori:</span>{' '}
+                      <span className="text-gray-500">Kategori:</span>{' '} <br />
                       <span className="capitalize">{
                         item.category === 'location' ? 'Lokasyon' :
                         item.category === 'costume' ? 'Kostüm' :
@@ -502,21 +512,21 @@ export default function ProjectDetailPage() {
                     
                     {item.dueDate && (
                       <div>
-                        <span className="text-gray-500">Son Tarih:</span>{' '}
-                        <span>{new Date(item.dueDate).toLocaleDateString('tr-TR')}</span>
+                        <span className="text-gray-500">Son Tarih:</span>{' '} <br />
+                        <span>{ formatDate(item.dueDate) }</span>
                       </div>
                     )}
                     
                     {item.assignedTo && (
                       <div>
-                        <span className="text-gray-500">Görevlendirilen:</span>{' '}
+                        <span className="text-gray-500">Görevlendirilen:</span>{' '} <br />
                         <span>{users.find(u => u.id === item.assignedTo)?.name || item.assignedTo}</span>
                       </div>
                     )}
                     
                     <div>
-                      <span className="text-gray-500">Oluşturulma:</span>{' '}
-                      <span>{new Date(item.createdAt).toLocaleDateString('tr-TR')}</span>
+                      <span className="text-gray-500">Oluşturulma:</span>{' '} <br />
+                      <span>{formatDate(item.createdAt)}</span>
                     </div>
                   </div>
                   
@@ -688,8 +698,8 @@ export default function ProjectDetailPage() {
                 <div>
                   <div className="text-xs text-gray-500">Tarih</div>
                   <div className="font-medium">
-                    {new Date(project.startDate).toLocaleDateString('tr-TR', { day: '2-digit', month: '2-digit', year: 'numeric' })} - 
-                    {new Date(project.endDate).toLocaleDateString('tr-TR', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+                    {formatDate(project.startDate)} <br />
+                    {project.endDate ? formatDate(project.endDate) : 'Devam Ediyor'}
                   </div>
                 </div>
                 <div>
@@ -783,6 +793,16 @@ export default function ProjectDetailPage() {
               <div className="flex items-center gap-1" onClick={() => openFullComponent(component.id)}>
                 <component.icon size={14} className="text-primary" />
                 {component.name}
+                {component.name === 'Senaryo' && project.script && (
+                  //download icon
+                  <button 
+                    className="ml-auto p-1 flex text-gray-500 hover:text-gray-800"
+                  >
+                    <FiDownload size={16} />
+                    <FiShare2 size={16} className="ml-1" />
+                  </button>
+                )}
+                
               </div>
               <div className="flex items-center gap-1">
                 <button 
@@ -805,6 +825,13 @@ export default function ProjectDetailPage() {
                 >
                   ↓
                 </button>
+                <button 
+                  className='p-1 text-gray-500 hover:text-gray-800'
+
+                >
+                  <FiEdit2 size={16} />
+                </button>
+
               </div>
             </div>
             
@@ -817,7 +844,13 @@ export default function ProjectDetailPage() {
       
       {/* Ana proje ekibi - sabit alt bölüm */}
       <div className="bg-white p-4 border-t border-gray-200 mt-4">
-        <h3 className="font-medium mb-3">Ana Proje Ekibi</h3>
+        <div className='flex items-center justify-between mb-3'>
+          <h3 className="font-medium mb-3">Ana Proje Ekibi</h3>
+          <button className="text-sm text-gray-600 px-3 py-2 ">
+            Tüm Ekibi Gör
+          </button>
+        </div>
+        
         <div className="space-y-3">
           {project.director && (
             <div className="flex items-center gap-3">

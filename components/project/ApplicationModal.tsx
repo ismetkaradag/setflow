@@ -140,7 +140,7 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({
                 ) : (
                   <div
                     onClick={handleUploadClick}
-                    className="border border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:bg-gray-50"
+                    className="border border-dashed border-gray-300 rounded-lg p-6 cursor-pointer hover:bg-gray-50"
                   >
                     <div className="mb-3">
                       <FiUpload size={28} className="mx-auto text-gray-400" />
@@ -196,6 +196,9 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({
                   className="input"
                   placeholder="Neden bu projede yer almak istediğinizi ve projeye nasıl katkı sağlayabileceğinizi belirtin..."
                 />
+                <div className="text-[10px] text-gray-500 mt-1 w-full text-end">
+                {coverLetter.length} / 200
+              </div>
               </div>
               
               <div className="bg-blue-50 text-blue-700 p-3 rounded-lg flex items-start gap-2">

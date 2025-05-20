@@ -38,6 +38,15 @@ export default function CreateProjectPage() {
   const handleBack = () => {
     setStep(prev => prev - 1);
   };
+
+  const formatDatee = (date: string) => {
+    const monthNames = [
+      'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+      'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'
+    ];
+    const d = new Date(date);
+    return `${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}`;
+  }
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -116,53 +125,97 @@ export default function CreateProjectPage() {
             </div>
             
             <div>
-  <label className="block text-sm font-medium text-gray-700 mb-3">
-    Proje Türü *
-  </label>
-  <div className="grid grid-cols-3 gap-4">
-    <button
-      type="button"
-      onClick={() => handleTypeSelect('film')}
-      className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
-        ${formData.type === 'film' 
-          ? 'border-primary bg-primary/5' 
-          : 'border-gray-200 hover:border-gray-300'}`}
-    >
-      <FiFilm size={24} className={formData.type === 'film' ? 'text-primary' : 'text-gray-500'} />
-      <span className={`mt-2 font-medium ${formData.type === 'film' ? 'text-primary' : 'text-gray-700'}`}>
-        Film
-      </span>
-    </button>
+            <label className="block text-sm font-medium text-gray-700 mb-3">
+              Proje Türü *
+            </label>
+            <div className="grid grid-cols-3 gap-4">
+              <button
+                type="button"
+                onClick={() => handleTypeSelect('film')}
+                className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
+                  ${formData.type === 'film' 
+                    ? 'border-primary bg-primary/5' 
+                    : 'border-gray-200 hover:border-gray-300'}`}
+              >
+                <FiFilm size={24} className={formData.type === 'film' ? 'text-primary' : 'text-gray-500'} />
+                <span className={`mt-2 font-medium ${formData.type === 'film' ? 'text-primary' : 'text-gray-700'}`}>
+                  Film
+                </span>
+              </button>
 
-    <button
-      type="button"
-      onClick={() => handleTypeSelect('series')}
-      className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
-        ${formData.type === 'series' 
-          ? 'border-primary bg-primary/5' 
-          : 'border-gray-200 hover:border-gray-300'}`}
-    >
-      <FiTv size={24} className={formData.type === 'series' ? 'text-primary' : 'text-gray-500'} />
-      <span className={`mt-2 font-medium ${formData.type === 'series' ? 'text-primary' : 'text-gray-700'}`}>
-        Dizi
-      </span>
-    </button>
+              <button
+                type="button"
+                onClick={() => handleTypeSelect('series')}
+                className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
+                  ${formData.type === 'series' 
+                    ? 'border-primary bg-primary/5' 
+                    : 'border-gray-200 hover:border-gray-300'}`}
+              >
+                <FiTv size={24} className={formData.type === 'series' ? 'text-primary' : 'text-gray-500'} />
+                <span className={`mt-2 font-medium ${formData.type === 'series' ? 'text-primary' : 'text-gray-700'}`}>
+                  Dizi
+                </span>
+              </button>
 
-    <button
-      type="button"
-      onClick={() => handleTypeSelect('digital')}
-      className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
-        ${formData.type === 'digital' 
-          ? 'border-primary bg-primary/5' 
-          : 'border-gray-200 hover:border-gray-300'}`}
-    >
-      <FiMonitor size={24} className={formData.type === 'digital' ? 'text-primary' : 'text-gray-500'} />
-      <span className={`mt-2 font-medium ${formData.type === 'digital' ? 'text-primary' : 'text-gray-700'}`}>
-        Dijital Platform
-      </span>
-    </button>
-  </div>
-</div>
+              <button
+                type="button"
+                onClick={() => handleTypeSelect('digital')}
+                className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
+                  ${formData.type === 'digital' 
+                    ? 'border-primary bg-primary/5' 
+                    : 'border-gray-200 hover:border-gray-300'}`}
+              >
+                <FiMonitor size={24} className={formData.type === 'digital' ? 'text-primary' : 'text-gray-500'} />
+                <span className={`mt-2 font-medium ${formData.type === 'digital' ? 'text-primary' : 'text-gray-700'}`}>
+                  Dijital
+                </span>
+              </button>
+
+              <button 
+                type="button"
+                onClick={() => handleTypeSelect('documentary')}
+                className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
+                  ${formData.type === 'documentary' 
+                    ? 'border-primary bg-primary/5' 
+                    : 'border-gray-200 hover:border-gray-300'}`}
+              >
+                <FiMonitor size={24} className={formData.type === 'documentary' ? 'text-primary' : 'text-gray-500'} />
+                <span className={`mt-2 font-medium ${formData.type === 'documentary' ? 'text-primary' : 'text-gray-700'}`}>
+                  Belgesel
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleTypeSelect('commercial')}
+                className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
+                  ${formData.type === 'commercial' 
+                    ? 'border-primary bg-primary/5' 
+                    : 'border-gray-200 hover:border-gray-300'}`}
+              >
+                <FiMonitor size={24} className={formData.type === 'commercial' ? 'text-primary' : 'text-gray-500'} />
+                <span className={`mt-2 font-medium ${formData.type === 'commercial' ? 'text-primary' : 'text-gray-700'}`}>
+                  Reklam
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleTypeSelect('other')}
+
+                className={`flex flex-col items-center justify-center p-6 rounded-lg border-2 
+                  ${formData.type === 'other' 
+                    ? 'border-primary bg-primary/5' 
+                    : 'border-gray-200 hover:border-gray-300'}`}
+              >
+                <FiMonitor size={24} className={formData.type === 'other' ? 'text-primary' : 'text-gray-500'} />
+                <span className={`mt-2 font-medium ${formData.type === 'other' ? 'text-primary' : 'text-gray-700'}`}>
+                  Diğer
+                </span>
+              </button>
+
+
+              
+            </div>
+          </div>
 
             
             <div>
@@ -179,6 +232,9 @@ export default function CreateProjectPage() {
                 placeholder="Projenizin kısa bir açıklamasını yazın..."
                 required
               />
+              <div className="text-[10px] text-gray-500 mt-1 w-full text-end">
+                {formData.description.length} / 200
+              </div>
             </div>
             
             <div className="pt-4 flex justify-end">
@@ -198,7 +254,7 @@ export default function CreateProjectPage() {
         
         {step === 2 && (
           <div className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               <div>
                 <label htmlFor="startDate" className="block text-sm font-medium text-gray-700 mb-1">
                   Başlangıç Tarihi *
@@ -238,26 +294,6 @@ export default function CreateProjectPage() {
                     min={formData.startDate}
                   />
                 </div>
-              </div>
-            </div>
-            
-            <div>
-              <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-1">
-                Tahmini Bütçe (₺)
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FiDollarSign className="text-gray-400" />
-                </div>
-                <input
-                  type="number"
-                  id="budget"
-                  name="budget"
-                  value={formData.budget}
-                  onChange={handleChange}
-                  className="input pl-10"
-                  placeholder="Örn: 5000000"
-                />
               </div>
             </div>
             
@@ -313,35 +349,23 @@ export default function CreateProjectPage() {
               <h3 className="font-medium mb-3">Proje Özeti</h3>
               
               <div className="space-y-4">
-                <div className="flex justify-between">
+                <div className="flex flex-col">
                   <span className="text-gray-500">Proje Adı:</span>
                   <span className="font-medium">{formData.title}</span>
                 </div>
                 
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Tür:</span>
-                  <span>{getProjectTypeName(formData.type as ProjectType)}</span>
-                </div>
-                
-                <div className="flex justify-between">
+                <div className="flex flex-col">
                   <span className="text-gray-500">Tarih Aralığı:</span>
                   <span>
-                    {formData.startDate && new Date(formData.startDate).toLocaleDateString('tr-TR')} - {' '}
-                    {formData.endDate && new Date(formData.endDate).toLocaleDateString('tr-TR')}
+                    {formatDatee(formData.startDate)} -{' '}
+                    {formatDatee(formData.endDate)}
                   </span>
                 </div>
                 
-                <div className="flex justify-between">
+                <div className="flex flex-col">
                   <span className="text-gray-500">Platform:</span>
                   <span>{getPlatformName(formData.platform as ProjectPlatform)}</span>
                 </div>
-                
-                {formData.budget && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Bütçe:</span>
-                    <span>{Number(formData.budget).toLocaleString('tr-TR')} ₺</span>
-                  </div>
-                )}
                 
                 <div>
                   <div className="text-gray-500 mb-1">Açıklama:</div>

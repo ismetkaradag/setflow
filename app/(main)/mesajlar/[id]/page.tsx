@@ -61,7 +61,7 @@ export default function MessageDetailPage() {
   if (!messageThread) return null;
 
   return (
-    <div className="mx-auto px-4 py-4">
+    <div className="mx-auto px-4 py-4 h-[90vh]">
       {/* Header */}
       <div className="flex items-center gap-2 mb-4">
         <button
@@ -107,7 +107,7 @@ export default function MessageDetailPage() {
       </div>
 
       {/* Mesaj Yazma Alanı */}
-      <div className="sticky bottom-12 w-[85vw] flex items-center border-gray-200 pt-2">
+      <div className="fixed bottom-16 w-[85vw] flex items-center border-gray-200 pt-2">
         <input
           type="text"
           placeholder="Mesaj yaz..."

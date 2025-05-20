@@ -1,4 +1,4 @@
-export type ProjectType = 'film' | 'series' | 'digital';
+export type ProjectType = 'film' | 'series' | 'digital' | 'commercial' | 'documentary' | 'music_video' | 'other';
 export type ProjectStatus = 'planning' | 'pre_production' | 'active' | 'post_production' | 'completed';
 export type ProjectPlatform = 'netflix' | 'prime' | 'disney' | 'tv' | 'cinema' | 'other';
 
@@ -188,7 +188,7 @@ export const projects: Project[] = [
         ]
       }
     ],
-    "script": "İSTANBUL RÜYASI\n\nSAHNE 1 - DIŞ/GÜN - SULTANAHMET MEYDANI\n\nALİ ve ZEYNEP kalabalık meydanda buluşurlar...\n\nALİ\nZeynep, bu tarihi eser nerede?\n\nZEYNEP\nBilmiyorum, ama peşindeyiz...\n \n\nSAHNE 2 - İÇ/GÜNDÜZ - KAFETERYA\n\nALİ ve ZEYNEP kafede otururlar...\n\nALİ\nBu iş çok tehlikeli...\n\nZEYNEP\nAma bunu başarmalıyız...\n \n\nSAHNE 3 - DIŞ/GÜNDÜZ - SULTANAHMET MEYDANI - ÇEŞME ÖNÜ\n\nALİ ve ZEYNEP çeşme önünde haritaya bakarlar.\n\nALİ\nBu haritadaki işaretlere göre, eser Kapalıçarşı'nın bir dükkanında olmalı.\n\nZEYNEP\nOraya gitmeden önce Kemal Bey'le konuşmalıyız. O bu konuda bize yardımcı olabilir.\n\nSAHNE 4 - İÇ/GÜNDÜZ - KAPALIÇARŞI - ANTİKACI DÜKKÂNI\n\nKEMAL BEY tezgahın arkasında antika bir saati incelerken, ALİ ve ZEYNEP dükkana girerler.\n\nKEMAL\nSizi bekliyordum...",
+    "script": "İSTANBUL RÜYASI\\n\\nSAHNE 1 - DIŞ/GÜN - SULTANAHMET MEYDANI\\n\\nALİ ve ZEYNEP kalabalık meydanda buluşurlar...\\n\\nALİ\\nZeynep, bu tarihi eser nerede?\\n\\nZEYNEP\\nBilmiyorum, ama peşindeyiz...\\n \\n\\nSAHNE 2 - İÇ/GÜNDÜZ - KAFETERYA\\n\\nALİ ve ZEYNEP kafede otururlar...\\n\\nALİ\\nBu iş çok tehlikeli...\\n\\nZEYNEP\\nAma bunu başarmalıyız...\\n \\n\\nSAHNE 3 - DIŞ/GÜNDÜZ - SULTANAHMET MEYDANI - ÇEŞME ÖNÜ\\n\\nALİ ve ZEYNEP çeşme önünde haritaya bakarlar.\\n\\nALİ\\nBu haritadaki işaretlere göre, eser Kapalıçarşı'nın bir dükkanında olmalı.\\n\\nZEYNEP\\nOraya gitmeden önce Kemal Bey'le konuşmalıyız. O bu konuda bize yardımcı olabilir.\\n\\nSAHNE 4 - İÇ/GÜNDÜZ - KAPALIÇARŞI - ANTİKACI DÜKKÂNI\\n\\nKEMAL BEY tezgahın arkasında antika bir saati incelerken, ALİ ve ZEYNEP dükkana girerler.\\n\\nKEMAL\\nSizi bekliyordum...",
     "timecode": [
       {
         "scene": "1A",
@@ -498,7 +498,7 @@ export const projects: Project[] = [
         ]
       }
     ],
-    "script": "KARANLIK SULAR\n\nBÖLÜM 1 - \"KAYIP\"\n\nSAHNE 1 - DIŞ/ŞAFAK - KASABA SAHİLİ\n\nSis içindeki bir sahil kasabası. Dalgalar kıyıya vuruyor. DEDEKTİF KEMAL (40'lı yaşlarda, yorgun görünümlü) sahilde yürür.\n\nVOICE OVER (KEMAL)\nBu kasabaya ilk geldiğimde, beni neyin beklediğini bilmiyordum...\n\nKemal sahilde ilerlerken kıyıya vurmuş bir tekneyi fark eder.\n\nSAHNE 2 - DIŞ/ŞAFAK - BALIKÇI LİMANI\n\nKEMAL limanda BALIKÇI MUSTAFA (60'lı yaşlarda) ile konuşur.\n\nKEMAL\nBu kasabada kaç kişi kayboldu?\n\nMUSTAFA\n(endişeli)\nÜç kişi... Hepsi de denizde...",
+    "script": "KARANLIK SULAR\\n\\nBÖLÜM 1 - \"KAYIP\"\\n\\nSAHNE 1 - DIŞ/ŞAFAK - KASABA SAHİLİ\\n\\nSis içindeki bir sahil kasabası. Dalgalar kıyıya vuruyor. DEDEKTİF KEMAL (40'lı yaşlarda, yorgun görünümlü) sahilde yürür.\\n\\nVOICE OVER (KEMAL)\\nBu kasabaya ilk geldiğimde, beni neyin beklediğini bilmiyordum...\\n\\nKemal sahilde ilerlerken kıyıya vurmuş bir tekneyi fark eder.\\n\\nSAHNE 2 - DIŞ/ŞAFAK - BALIKÇI LİMANI\\n\\nKEMAL limanda BALIKÇI MUSTAFA (60'lı yaşlarda) ile konuşur.\\n\\nKEMAL\\nBu kasabada kaç kişi kayboldu?\\n\\nMUSTAFA\\n(endişeli)\\nÜç kişi... Hepsi de denizde...",
     "timecode": [
       {
         "scene": "1A",
@@ -761,7 +761,7 @@ export const projects: Project[] = [
         ]
       }
     ],
-    "script": "DİJİTAL KAÇIŞ\n\nBÖLÜM 1 - \"KOD ADI: ORION\"\n\nSAHNE 3 - İÇ/GECE - LEO'NUN MEKANI\n\nLOŞ BİR ODA. Duvarlarda siberpunk posterler, etrafta bilgisayar parçaları. LEO (20'lerinde, zeki ama yorgun) birden fazla monitörün başında, parmakları klavyede dans ediyor.\n\nLEO\n(kendi kendine)\nNeredeyse... Sadece bir kaç satır daha...\n\nEKRAN GÖRÜNTÜSÜ - Karmaşık kod satırları hızla akıyor. Bir ilerleme çubuğu %98'de.\n\nBirden ana monitörde KIRMIZI BİR UYARI belirir: \"SİSTEM İHLALİ ALGILANDI!\"\n\nLEO\n(paniklemiş)\nOlamaz... Beni buldular!",
+    "script": "DİJİTAL KAÇIŞ\\n\\nBÖLÜM 1 - \"KOD ADI: ORION\"\\n\\nSAHNE 3 - İÇ/GECE - LEO'NUN MEKANI\\n\\nLOŞ BİR ODA. Duvarlarda siberpunk posterler, etrafta bilgisayar parçaları. LEO (20'lerinde, zeki ama yorgun) birden fazla monitörün başında, parmakları klavyede dans ediyor.\\n\\nLEO\\n(kendi kendine)\\nNeredeyse... Sadece bir kaç satır daha...\\n\\nEKRAN GÖRÜNTÜSÜ - Karmaşık kod satırları hızla akıyor. Bir ilerleme çubuğu %98'de.\\n\\nBirden ana monitörde KIRMIZI BİR UYARI belirir: \"SİSTEM İHLALİ ALGILANDI!\"\\n\\nLEO\\n(paniklemiş)\\nOlamaz... Beni buldular!",
     "timecode": [
       {
         "scene": "Ep1_Sc1",
@@ -954,8 +954,12 @@ export const getProjectTypeName = (type: ProjectType) => {
       return 'Film';
     case 'series':
       return 'Dizi';
+    case 'documentary':
+      return 'Belgesel';
     case 'digital':
-      return 'Dijital Platform';
+      return 'Dijital İçerik';
+    case 'commercial':
+      return 'Reklam';
     default:
       return 'Bilinmeyen';
   }

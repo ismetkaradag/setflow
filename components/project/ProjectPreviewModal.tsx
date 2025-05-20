@@ -31,7 +31,14 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({
   
   // Kullanıcı zaten ekip üyesi mi
   const isTeamMember = project.team?.some(member => member.userId === activeUserId);
-  
+  const formatDate = (date: string) => {
+    const months = [
+      'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+      'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'
+    ];
+    const d = new Date(date);
+    return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+  };
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 p-4" style={{ marginTop: '0px' }}>
       <div className="bg-white rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto">
@@ -87,8 +94,7 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({
                 <div className="flex items-center gap-2 mt-1">
                   <FiCalendar className="text-gray-400" />
                   <span>
-                    {new Date(project.startDate).toLocaleDateString('tr-TR')} -{' '}
-                    {new Date(project.endDate).toLocaleDateString('tr-TR')}
+                    {formatDate(project.startDate)} <br /> {formatDate(project.endDate)}
                   </span>
                 </div>
               </div>

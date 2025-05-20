@@ -323,7 +323,11 @@ export default function ProfilePage() {
                 onChange={handleChange}
                 rows={4}
                 className="input"
+                placeholder='Kendinizi tanıtın...'
               />
+              <div className="text-[10px] text-gray-500 mt-1 w-full text-end">
+                {editFormData.bio.length} / 200
+              </div>
             </div>
           </div>
         )}

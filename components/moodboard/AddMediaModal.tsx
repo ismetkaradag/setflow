@@ -181,6 +181,9 @@ const AddMediaModal: React.FC<AddMediaModalProps> = ({ isOpen, onClose, albumId,
                 placeholder={mediaType === 'text' ? 'İçerik metni...' : 'Bağlantı açıklaması...'}
                 required
               />
+              <div className="text-[10px] text-gray-500 mt-1 w-full text-end">
+                {content.length} / 200
+              </div>
             </div>
           )}
           
