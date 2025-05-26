@@ -287,7 +287,7 @@ export default function ProjectDetailPage() {
         
       case 'script':
         return project.script ? (
-          <div className="p-4 max-h-[30vh] overflow-y-auto">
+          <div className="p-4 overflow-y-auto">
             <div className="bg-white rounded-lg border border-gray-200 p-6 ">
               <div className="screenplay-format space-y-1 text-[10px] ">
                 {formatScript(project.script)}
