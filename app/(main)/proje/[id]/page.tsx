@@ -255,7 +255,7 @@ export default function ProjectDetailPage() {
     switch (componentId) {
       case 'callsheet':
         return project.callsheet ? (
-          <div className="p-4 max-h-[80vh] overflow-y-auto ">
+          <div className="p-4  overflow-y-auto ">
             <div className="space-y-3">
               {project.callsheet.map((item, index) => (
                 <div key={index} className="bg-white rounded-lg border border-gray-200 p-3">
@@ -303,7 +303,7 @@ export default function ProjectDetailPage() {
         
       case 'timecode':
         return project.timecode ? (
-          <div className="max-h-[80vh] overflow-y-auto">
+          <div className=" overflow-y-auto">
             <div className="bg-white rounded-lg border border-gray-200 overflow-x-auto">
               <table className="min-w-full">
                 <thead>
@@ -349,7 +349,7 @@ export default function ProjectDetailPage() {
         
       case 'continuity':
         return project.continuity ? (
-          <div className="p-4 max-h-[80vh] overflow-y-auto">
+          <div className="p-4  overflow-y-auto">
             <div className="space-y-6">
               {project.continuity.map((item, index) => (
                 <div key={index} className="bg-white rounded-lg border border-gray-200 p-4">
@@ -443,7 +443,7 @@ export default function ProjectDetailPage() {
         
       case 'preparationStatus':
         return project.preparationStatus ? (
-          <div className="p-4 max-h-[80vh] overflow-y-auto">
+          <div className="p-4  overflow-y-auto">
             <div className="flex flex-col justify-between mb-4">
               <div className="text-sm">
                 <span className="font-medium">Tamamlanan:</span>{' '}
@@ -551,7 +551,7 @@ export default function ProjectDetailPage() {
         
       case 'moodboard':
         return project.moodboard ? (
-          <div className="p-4 max-h-[80vh] overflow-y-auto">
+          <div className="p-4  overflow-y-auto">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {project.moodboard.map((image, index) => (
                 <div key={index} className="relative aspect-square overflow-hidden rounded-lg bg-gray-100 group">
@@ -585,7 +585,7 @@ export default function ProjectDetailPage() {
         
       case 'equipment':
         return project.equipment ? (
-          <div className="p-4 max-h-[80vh] overflow-y-auto">
+          <div className="p-4  overflow-y-auto">
             <div className="bg-white rounded-lg border border-gray-200 p-4 overflow-x-auto">
               <table className="min-w-full">
                 <thead>
