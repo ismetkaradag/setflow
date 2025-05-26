@@ -10,7 +10,7 @@ const demoMessages = [
   {
     id: '1',
     sender: 'Elif Bayraktar',
-    avatar: '/avatars/elif.jpg',
+    avatar: '/avatars/elif.jpeg',
     messages: [
       { text: 'Merhaba, bugünkü sahne için bir sorum olacak.', time: '10dk önce', from: 'Elif' },
       { text: 'Hazırlıklar tamam mı?', time: '8dk önce', from: 'Elif' },
@@ -20,7 +20,7 @@ const demoMessages = [
   {
     id: '2',
     sender: 'Hasan Vardar',
-    avatar: '/avatars/hasan.jpg',
+    avatar: '/avatars/hasan.jpeg',
     messages: [
       { text: 'Ekip listesiyle ilgili bir güncelleme var mı?', time: '1 saat önce', from: 'Hasan' },
       { text: 'Henüz değil, toplantı sonrası paylaşacağım.', time: '58dk önce', from: 'Me' },
@@ -34,7 +34,7 @@ const demoMessages = [
   {
     id: '3',
     sender: 'Banu Arıkan',
-    avatar: '/avatars/banu.jpg',
+    avatar: '/avatars/banu.jpeg',
     messages: [
       { text: 'Makyaj departmanında bir değişiklik oldu.', time: 'Dün', from: 'Banu' },
       { text: 'Tamam, bilgi için teşekkürler.', time: 'Dün', from: 'Me' },

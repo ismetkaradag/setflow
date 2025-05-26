@@ -17,7 +17,7 @@ const demoNotifications = [
     sender: {
       id: '2',
       name: 'Elif Bayraktar',
-      avatar: '/avatars/elif.jpg'
+      avatar: '/avatars/elif.jpeg'
     },
     link: '/mesajlar/12345'
   },
@@ -48,7 +48,7 @@ const demoNotifications = [
     user: {
       id: '4',
       name: 'Hasan Vardar',
-      avatar: '/avatars/hasan.jpg'
+      avatar: '/avatars/hasan.jpeg'
     },
     link: '/projeler/2/ekip'
   },

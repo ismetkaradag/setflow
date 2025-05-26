@@ -32,13 +32,13 @@ export const moodboardAlbums: MoodboardAlbum[] = [
     scene: '1A',
     title: 'Sultanahmet Meydanı - Ana Karşılaşma',
     description: 'Ali ve Zeynep\'in ilk karşılaşması için referanslar ve ışık ayarları',
-    thumbnailUrl: '/moodboard/istanbul1.jpg',
+    thumbnailUrl: '/moodboard/istanbul1.jpeg',
     mediaItems: [
       {
         id: '101',
         type: 'image',
         title: 'Meydanda Gün Batımı Işığı',
-        url: '/moodboard/istanbul1.jpg',
+        url: '/moodboard/istanbul1.jpeg',
         createdAt: '2024-05-01T10:30:00',
         createdBy: '4', // Hasan Vardar (Işık Şefi)
         tags: ['dış çekim', 'gün batımı', 'ışık']
@@ -47,7 +47,7 @@ export const moodboardAlbums: MoodboardAlbum[] = [
         id: '102',
         type: 'image',
         title: 'Kalabalık Meydan',
-        url: '/moodboard/istanbul2.jpg',
+        url: '/moodboard/istanbul2.jpeg',
         createdAt: '2024-05-01T11:45:00',
         createdBy: '1', // Derya Arslan (Yönetmen)
         tags: ['kalabalık', 'meydan']
@@ -71,13 +71,13 @@ export const moodboardAlbums: MoodboardAlbum[] = [
     scene: '2B',
     title: 'Kapalıçarşı - Takip Sahnesi',
     description: 'Ali\'nin Zeynep\'i takip ettiği çarşı içi sahneleri için referanslar',
-    thumbnailUrl: '/moodboard/kapalicarsi.jpg',
+    thumbnailUrl: '/moodboard/kapalicarsi.jpeg',
     mediaItems: [
       {
         id: '201',
         type: 'image',
         title: 'Çarşı Koridoru',
-        url: '/moodboard/kapalicarsi.jpg',
+        url: '/moodboard/kapalicarsi.jpeg',
         createdAt: '2024-05-03T14:20:00',
         createdBy: '1', // Derya Arslan
         tags: ['iç mekan', 'çarşı', 'koridor']
@@ -120,13 +120,13 @@ export const moodboardAlbums: MoodboardAlbum[] = [
     scene: '3C',
     title: 'Ayasofya - Karşılaşma',
     description: 'Ali ve Zeynep\'in Ayasofya önündeki önemli diyalog sahnesi',
-    thumbnailUrl: '/moodboard/ayasofya.jpg',
+    thumbnailUrl: '/moodboard/ayasofya.jpeg',
     mediaItems: [
       {
         id: '301',
         type: 'image',
         title: 'Ayasofya Dış Görünüm',
-        url: '/moodboard/ayasofya.jpg',
+        url: '/moodboard/ayasofya.jpeg',
         createdAt: '2024-05-05T11:30:00',
         createdBy: '1', // Derya Arslan
         tags: ['dış mekan', 'ayasofya', 'tarihi']

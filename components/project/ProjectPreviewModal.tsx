@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { FiX, FiCalendar, FiDollarSign, FiUser, FiMonitor, FiTag, FiMapPin, FiClock, FiFile } from 'react-icons/fi';
+import Image from 'next/image';
 import { Project, getProjectTypeName, getProjectStatusName, getPlatformName } from '@/lib/data/projects';
 import { users } from '@/lib/data/users';
 
@@ -116,7 +117,13 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({
           
           {/* Görsel (demo için sadece bir renk bloğu) */}
           <div className="bg-gray-100 h-32 rounded-lg mt-6 overflow-hidden flex items-center justify-center">
-            <span className="text-gray-400">Proje Görseli</span>
+            <Image
+              src={project.image || '/projects/istanbul.jpeg'}
+              alt={project.title}
+              width={600}
+              height={200}
+              className="object-cover w-full h-full rounded-lg"
+            />
           </div>
           
           <div className="flex justify-between items-center mt-6 pt-4 border-t border-gray-100">

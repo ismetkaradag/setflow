@@ -11,7 +11,7 @@ const messages = [
     id: '1',
     sender: {
       name: 'Elif Bayraktar',
-      avatar: '/avatars/elif.jpg',
+      avatar: '/avatars/elif.jpeg',
     },
     content: 'Bugünkü sahneye dair bir notum var, müsait misin?',
     time: '10dk önce',
@@ -20,7 +20,7 @@ const messages = [
     id: '2',
     sender: {
       name: 'Hasan Vardar',
-      avatar: '/avatars/hasan.jpg',
+      avatar: '/avatars/hasan.jpeg',
     },
     content: 'Yeni çekim planına göz attın mı?',
     time: '1 saat önce',
@@ -29,7 +29,7 @@ const messages = [
     id: '3',
     sender: {
       name: 'Banu Arıkan',
-      avatar: '/avatars/banu.jpg',
+      avatar: '/avatars/banu.jpeg',
     },
     content: 'Makyaj departmanında bir değişiklik oldu.',
     time: 'Dün',

@@ -192,7 +192,11 @@ export default function ProfilePage() {
           <div className="space-y-4">
             <div className="flex items-center">
               <div className="bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center">
-                <FiUser size={32} className="text-gray-500" />
+                {activeUser.avatar ? (
+                  <img src={activeUser.avatar} alt={`${activeUser.name} ${activeUser.surname}`} className="w-full h-full rounded-full object-cover" />
+                ) : (
+                  <FiUser className="text-gray-400" size={32} />
+                )}
               </div>
               <div className="ml-4">
                 <h3 className="font-medium text-lg">{activeUser.name} {activeUser.surname}</h3>

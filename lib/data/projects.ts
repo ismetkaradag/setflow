@@ -118,7 +118,7 @@ export const projects: Project[] = [
     "platform": "cinema",
     "description": "İstanbul'un tarihi dokusunda geçen, kayıp bir tarihi eserin peşindeki iki arkadaşın hikayesi.",
     "budget": 5000000,
-    "image": "/projects/istanbul.jpg",
+    "image": "/projects/istanbul.jpeg",
     "team": [
       { "userId": "1", "role": "director", "status": "confirmed" },
       { "userId": "2", "role": "assistant_director", "status": "confirmed" },
@@ -251,7 +251,7 @@ export const projects: Project[] = [
             "notes": "Haritadaki işaretler kırmızı mürekkeple yapılmış"
           }
         ],
-        "images": ["/continuity/scene1a_1.jpg", "/continuity/scene1a_2.jpg"],
+        "images": ["/continuity/scene1a_1.jpeg", "/continuity/scene1a_2.jpeg"],
         "notes": "Ali soldan, Zeynep sağdan sahneye giriyor. Karşılaşma anında Ali'nin elinde telefon var."
       },
       {
@@ -290,7 +290,7 @@ export const projects: Project[] = [
             "notes": "Masada iki fincan, harita ve Zeynep'in notebooks'u bulunuyor"
           }
         ],
-        "images": ["/continuity/scene2b_1.jpg", "/continuity/scene2b_2.jpg", "/continuity/scene2b_3.jpg"],
+        "images": ["/continuity/scene2b_1.jpeg", "/continuity/scene2b_2.jpeg", "/continuity/scene2b_3.jpeg"],
         "notes": "Masa düzeni önemli, masanın üzerindeki nesnelerin pozisyonları takip edilmeli. Ali'nin telefonu sağ cebinde."
       }
     ],
@@ -357,12 +357,12 @@ export const projects: Project[] = [
       }
     ],
     "moodboard": [
-      "/moodboard/istanbul1.jpg",
-      "/moodboard/istanbul2.jpg",
-      "/moodboard/sultan_sunset.jpg",
-      "/moodboard/kapalicarsi.jpg",
-      "/moodboard/antique_map.jpg",
-      "/moodboard/mystery_artifact.jpg"
+      "/moodboard/istanbul1.jpeg",
+      "/moodboard/istanbul2.jpeg",
+      "/moodboard/sultan_sunset.jpeg",
+      "/moodboard/kapalicarsi.jpeg",
+      "/moodboard/antique_map.jpeg",
+      "/moodboard/mystery_artifact.jpeg"
     ],
     "equipment": [
       {
@@ -433,7 +433,7 @@ export const projects: Project[] = [
     "platform": "netflix",
     "description": "Karadeniz'de bir sahil kasabasında yaşanan gizemli olayları araştıran dedektif Kemal'in hikayesi.",
     "budget": 12000000,
-    "image": "/projects/karanlik.jpg",
+    "image": "/projects/karanlik.jpeg",
     "team": [
       { "userId": "1", "role": "director", "status": "confirmed" },
       { "userId": "3", "role": "set_assistant", "status": "confirmed" },
@@ -533,7 +533,7 @@ export const projects: Project[] = [
           }
         ],
         "props": [],
-        "images": ["/continuity/karanlik_1a_1.jpg", "/continuity/karanlik_1a_2.jpg"],
+        "images": ["/continuity/karanlik_1a_1.jpeg", "/continuity/karanlik_1a_2.jpeg"],
         "notes": "Sis efekti için özel ekipman gerekli. Kemal'in yürüyüşü ağır ve düşünceli olmalı."
       },
       {
@@ -567,7 +567,7 @@ export const projects: Project[] = [
             "notes": "Teknenin adı \"Umut\" olarak görünmeli"
           }
         ],
-        "images": ["/continuity/karanlik_2a_1.jpg", "/continuity/karanlik_2a_2.jpg"],
+        "images": ["/continuity/karanlik_2a_1.jpeg", "/continuity/karanlik_2a_2.jpeg"],
         "notes": "Limanda birkaç tekne daha olmalı. Balıkçılar arka planda çalışıyor olmalı."
       }
     ],
@@ -646,12 +646,12 @@ export const projects: Project[] = [
       }
     ],
     "moodboard": [
-      "/moodboard/karadeniz_sahil.jpg",
-      "/moodboard/sisli_orman.jpg",
-      "/moodboard/eski_balikci_teknesi.jpg",
-      "/moodboard/dedektif_noir.jpg",
-      "/moodboard/kasaba_gece.jpg",
-      "/moodboard/firtinali_deniz.jpg"
+      "/moodboard/karadeniz_sahil.jpeg",
+      "/moodboard/sisli_orman.jpeg",
+      "/moodboard/eski_balikci_teknesi.jpeg",
+      "/moodboard/dedektif_noir.jpeg",
+      "/moodboard/kasaba_gece.jpeg",
+      "/moodboard/firtinali_deniz.jpeg"
     ],
     "equipment": [
       {
@@ -722,7 +722,7 @@ export const projects: Project[] = [
     "platform": "prime",
     "description": "Genç bir hackerın, siber suç örgütünün elinden kurtulma mücadelesini anlatan bir dijital dizi.",
     "budget": 750000,
-    "image": "/projects/dijital_kacis.jpg",
+    "image": "/projects/dijital_kacis.jpeg",
     "team": [
       { "userId": "2", "role": "director", "status": "confirmed" },
       { "userId": "11", "role": "writer", "status": "confirmed" },
@@ -816,7 +816,7 @@ export const projects: Project[] = [
             "notes": "Ekranında ikincil programlar veya iletişim arayüzü görünecek."
           }
         ],
-        "images": ["/continuity/digital_ep1_sc3_1.jpg", "/continuity/digital_ep1_sc3_leo_closeup.jpg"],
+        "images": ["/continuity/digital_ep1_sc3_1.jpeg", "/continuity/digital_ep1_sc3_leo_closeup.jpeg"],
         "notes": "Odadaki neon ışıkların yansımalarına dikkat edilmeli. Kabloların dağınıklığı kasıtlı ve tutarlı olmalı."
       }
     ],
@@ -883,12 +883,12 @@ export const projects: Project[] = [
       }
     ],
     "moodboard": [
-      "/moodboard/cyberpunk_city.jpg",
-      "/moodboard/hacker_den.jpg",
-      "/moodboard/neon_lights.jpg",
-      "/moodboard/code_on_screen.jpg",
-      "/moodboard/dystopian_future.jpg",
-      "/moodboard/virtual_reality.jpg"
+      "/moodboard/cyberpunk_city.jpeg",
+      "/moodboard/hacker_den.jpeg",
+      "/moodboard/neon_lights.jpeg",
+      "/moodboard/code_on_screen.jpeg",
+      "/moodboard/dystopian_future.jpeg",
+      "/moodboard/virtual_reality.jpeg"
     ],
     "equipment": [
       {

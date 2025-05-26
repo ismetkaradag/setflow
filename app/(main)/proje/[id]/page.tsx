@@ -49,7 +49,8 @@ import {
   FiDownload,
   FiShare,
   FiShare2,
-  FiAperture
+  FiAperture,
+  FiChevronDown
 } from 'react-icons/fi';
 import { projects, getProjectTypeName, getProjectStatusName, getPlatformName } from '@/lib/data/projects';
 import { users, getRoleName } from '@/lib/data/users';
@@ -76,7 +77,7 @@ export default function ProjectDetailPage() {
   const [activeComponent, setActiveComponent] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState('list'); // 'list' veya 'grid'
   const [showInfoModal, setShowInfoModal] = useState(false);
-  
+  const [collapsedComponent, setCollapsedComponent] = useState<string | null>(null);
   // Bileşenlerin sırası
   const [components, setComponents] = useState(projectComponents);
   
@@ -246,13 +247,15 @@ export default function ProjectDetailPage() {
     
     return `${durHours > 0 ? durHours + 'sa ' : ''}${durMinutes}dk ${durSeconds}sn`;
   };
-
+  const toggleComponent = (id: string | null) => {
+    setCollapsedComponent(prev => (prev === id ? null : id));
+  };
   // Bileşen içeriğini göster
   const renderComponentContent = (componentId: string) => {
     switch (componentId) {
       case 'callsheet':
         return project.callsheet ? (
-          <div className="p-4 max-h-[80vh] overflow-y-auto">
+          <div className="p-4 max-h-[80vh] overflow-y-auto ">
             <div className="space-y-3">
               {project.callsheet.map((item, index) => (
                 <div key={index} className="bg-white rounded-lg border border-gray-200 p-3">
@@ -638,14 +641,10 @@ export default function ProjectDetailPage() {
         );
         
       default:
-        return (
-          <div className="flex flex-col items-center justify-center p-8">
-            <FiFile size={32} className="text-gray-300 mb-2" />
-            <p className="text-gray-500 text-sm">İçerik bulunamadı</p>
-          </div>
-        );
+       return null;        
     }
   };
+  
   
   // Aktif bileşeni tam ekran göster
   const openFullComponent = (componentId: string) => {
@@ -732,23 +731,7 @@ export default function ProjectDetailPage() {
         </div>
       )}
       
-      {/* Görünüm seçenekleri */}
-      <div className="flex justify-end items-center p-3 gap-2">
-        <div className="flex bg-gray-200 rounded-lg overflow-hidden">
-          <button 
-            onClick={() => setViewMode('list')} 
-            className={`p-2 ${viewMode === 'list' ? 'bg-gray-300' : ''}`}
-          >
-            <FiList size={16} />
-          </button>
-          <button 
-            onClick={() => setViewMode('grid')} 
-            className={`p-2 ${viewMode === 'grid' ? 'bg-gray-300' : ''}`}
-          >
-            <FiGrid size={16} />
-          </button>
-        </div>
-      </div>
+
       
       {/* Tam ekran bileşen görünümü */}
       {activeComponent && (
@@ -803,6 +786,17 @@ export default function ProjectDetailPage() {
                   </button>
                 )}
                 
+                <button
+                  className="ml-auto p-1 text-gray-500 hover:text-gray-800"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleComponent(component.id);
+                  }}
+                >
+                  <FiChevronDown size={16} className={collapsedComponent === component.id ? 'rotate-180' : ''} />
+                  
+                </button>      
+                
               </div>
               <div className="flex items-center gap-1">
                 <button 
@@ -834,10 +828,11 @@ export default function ProjectDetailPage() {
 
               </div>
             </div>
-            
+            {collapsedComponent === component.id &&
             <div onClick={() => openFullComponent(component.id)}>
                 {viewMode === 'list' && renderComponentContent(component.id)}
             </div>
+            }
           </div>
         ))}
       </div>
